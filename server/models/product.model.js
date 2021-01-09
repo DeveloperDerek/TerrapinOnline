@@ -7,6 +7,15 @@ const productSchema = new mongoose.Schema(
         },
         price: {
             type: Number
+        },
+        description: {
+            type: String
+        },
+        category: {
+            type: String
+        },
+        quantity: {
+            type: Number
         }
     }, {timestamps: true}
 )

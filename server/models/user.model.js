@@ -1,4 +1,3 @@
-
 const mongoose = require("mongoose");
 const uniqueValidator = require('mongoose-unique-validator');
 const reqErr = "{PATH} is required"
@@ -33,17 +32,7 @@ const userSchema = new mongoose.Schema(
                 validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
                 message: "Please enter a valid email"
             }
-        },
-        // birthday: {
-        //     type: Date,
-        //     required: [true, "Please enter your birthday"],
-        //     max: [moment().subtract(13, "years").format("YYYY-MM-DD"), "Must be older than 13"],
-        //     min: [moment().subtract(100, "years").format("YYYY-MM-DD"), "Must be younger than 100"]
-        // },
-        // gender: {
-        //     type: String,
-        //     required: [true, "Please enter your gender"]
-        // },
+        }
     }, {timestamps: true}
 )
 
