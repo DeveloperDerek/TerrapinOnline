@@ -4,43 +4,33 @@ module.exports = {
     // @desc    Create new order
     // @route   POST /api/orders
     // @access  Private
-    async addOrderItems (req, res) {
+    async createOrder (req, res) {
         const {
             orderItems,
             shippingAddress,
-            paymentMethod,
-            itemsPrice,
             taxPrice,
             shippingPrice,
             totalPrice
         } = req.body
+        
+        const newOrder = new Order({
+            user: req.user._id,
+            orderItems,
+            shippingAddress,
+            taxPrice,
+            shippingPrice,
+            totalPrice
+        })
 
-        if (orderItems && orderItems.length === 0) {
-            res.status(400)
-            throw new Error('No order items')
-            return
-        } else {
-            const order = new Order({
-                orderItems,
-                user: req.user._id,
-                shippingAddress,
-                paymentMethod,
-                itemsPrice,
-                taxPrice,
-                shippingPrice,
-                totalPrice
-            })
-        
-            const createdOrder = await order.save()
-        
-            res.status(201).json(createdOrder)
-        }
+        const createdOrder = await newOrder.save();
+
+        res.status(201).json(createdOrder);
     },
     // @desc    Get all orders
     // @route   GET /api/orders
     // @access  Private/Admin
     async getOrders (req, res) {
-        const orders = await Order.find({}).populate('user') // .populate lets you reference documents in other collections
+        const orders = await Order.find({user: req.user._id})
         res.json(orders)
     }
 }

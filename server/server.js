@@ -17,6 +17,7 @@ app.use(cors({ credentials: true, origin: "http://localhost:3000" })); // client
 app.use("/api/google/", require("./routes/google.route"));
 app.use("/api/user/", require("./routes/user.route"));
 app.use("/api/product/", require("./routes/product.route"));
+app.use("/api/cart/", require("./routes/cart.route"));
 app.use("/api/order/", require("./routes/order.route"));
 app.use("/api/tortoise/", require("./routes/tortoise.route"));
 app.use("/api/turtle/", require("./routes/turtle.route"));

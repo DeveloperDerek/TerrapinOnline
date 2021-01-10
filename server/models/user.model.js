@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+const Mongoose = require("mongoose");
 const uniqueValidator = require('mongoose-unique-validator');
 const reqErr = "{PATH} is required"
 const bcrypt = require('bcrypt');
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Mongoose.Schema(
     {
         googleId: {
             type: String
@@ -64,6 +64,6 @@ userSchema.pre("save", function(next) {
 
 userSchema.plugin(uniqueValidator, {message: "{PATH} is already taken"});
 
-const User = mongoose.model("User", userSchema);
+const User = Mongoose.model("User", userSchema);
 
 module.exports = User;

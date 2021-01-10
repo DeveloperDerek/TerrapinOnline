@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const Mongoose = require("mongoose");
 
-const tortoiseSchema = new mongoose.Schema(
+const tortoiseSchema = new Mongoose.Schema(
     {
         commonName: {
             type: String
@@ -29,6 +29,6 @@ const tortoiseSchema = new mongoose.Schema(
     }
 )
 
-const Tortoise = mongoose.model("Tortoise", tortoiseSchema);
+const Tortoise = Mongoose.model("Tortoise", tortoiseSchema);
 
 module.exports = Tortoise;

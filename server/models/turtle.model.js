@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const Mongoose = require("mongoose");
 
-const turtleSchema = new mongoose.Schema(
+const turtleSchema = new Mongoose.Schema(
     {
         commonName: {
             type: String
@@ -29,6 +29,6 @@ const turtleSchema = new mongoose.Schema(
     }
 )
 
-const Turtle = mongoose.model("Turtle", turtleSchema);
+const Turtle = Mongoose.model("Turtle", turtleSchema);
 
 module.exports = Turtle;
