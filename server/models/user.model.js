@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const uniqueValidator = require('mongoose-unique-validator');
 const reqErr = "{PATH} is required"
 const bcrypt = require('bcrypt');
-const moment = require("moment");
 
 const userSchema = new mongoose.Schema(
     {
@@ -32,6 +31,11 @@ const userSchema = new mongoose.Schema(
                 validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
                 message: "Please enter a valid email"
             }
+        },
+        role: {
+            type: String,
+            default: 'ROLE_MEMBER',
+            enum: ['ROLE_MEMBER', 'ROLE_ADMIN', 'ROLE_MERCHANT']
         }
     }, {timestamps: true}
 )
