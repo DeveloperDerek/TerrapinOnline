@@ -7,6 +7,7 @@ module.exports = {
             { $addToSet: 
                 {cartItems:{
                     product: req.body.product_id,
+                    price: req.body.price,
                     quantity: req.body.quantity
                 }} 
             },
@@ -15,9 +16,9 @@ module.exports = {
         return res.json(userCart)
     },
     async viewCart(req, res) {
-        const cart = await Cart.find({user: req.user._id})
+        const cart = await Cart.findOne({user: req.user._id})
             .populate('cartItems.product')
-            // .populate lets you reference documents in other collections
+            // // .populate lets you reference documents in other collections
         res.json(cart);
     }
 }

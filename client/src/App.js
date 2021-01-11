@@ -3,7 +3,9 @@ import { Router } from "@reach/router";
 import axios from "axios";
 import { UserContext } from "./utils/UserContext";
 
-import Home from "./views/Home";
+import HomePage from "./views/HomePage";
+import ProductPage from "./views/ProductPage";
+import CartPage from "./views/CartPage";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({
@@ -28,7 +30,9 @@ function App() {
     <div>
       <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
         <Router>
-          <Home path="/" />
+          <HomePage path="/" />
+          <ProductPage path="/product/:id" />
+          <CartPage path="/cart" />
         </Router>
       </UserContext.Provider>
     </div>

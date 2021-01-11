@@ -22,7 +22,6 @@ export default (props) => {
     return (
         <div>
             <GoogleLogin
-                // use your client id here
                 clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                 buttonText="Login with Google"
                 redirectUri="postmessage"

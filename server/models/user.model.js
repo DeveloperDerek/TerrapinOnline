@@ -1,6 +1,5 @@
 const Mongoose = require("mongoose");
 const uniqueValidator = require('mongoose-unique-validator');
-const reqErr = "{PATH} is required"
 const bcrypt = require('bcrypt');
 
 const userSchema = new Mongoose.Schema(
@@ -10,22 +9,22 @@ const userSchema = new Mongoose.Schema(
         },
         firstName: {
             type: String,
-            required: [true, "First name is required"],
+            required: [true, "First name required"],
             minlength: [2, "First name must be at least 2 characters"]
         },
         lastName: {
             type: String,
-            required: [true, "Last name is required"],
+            required: [true, "Last name required"],
             minlength: [2, "Last name must be at least 2 characters"]
         },
         password: {
             type: String,
-            required: [true, reqErr],
+            required: [true, "Password required"],
             minlength: [5, "Password must be at least 5 characters"]
         },
         email: {
             type: String,
-            required: [true, reqErr],
+            required: [true, "Email required"],
             unique: true,
             validate: {
                 validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
@@ -48,7 +47,7 @@ userSchema.virtual("confirmPassword")
 // Next we need to make use of some Middleware to add in another validation. Specifically we will be using the "pre hook" and having it run before validations.
 userSchema.pre("validate", function(next) {
     if (this.password !== this.confirmPassword) {
-        this.invalidate("confirmPassword", "Password must match confirm password");
+        this.invalidate("confirmPassword", "Passwords must match");
     }
     next();
 });

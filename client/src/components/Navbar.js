@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
+import { Link } from "@reach/router";
 import { UserContext } from "../utils/UserContext";
 import Login from "./Login";
 
@@ -22,42 +23,38 @@ const Navbar = () => {
     }
 
     return(
-        <nav className="navbar navbar-expand-lg navbar-dark bg-success">
-            <div className="container-fluid">
-                <a className="navbar-brand" href="/">TerrapinOnline</a>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="/product_search">Products</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" aria-current="page" href="/product_search">Terrapins</a>
-                        </li>
-                        <li className="nav-item dropdown">
-                            <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Share</span>
-                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a className="dropdown-item" href="/"><i className="fab fa-facebook"></i> Like us on Facebook</a></li>
-                            <li><a className="dropdown-item" href="/"><i className="fab fa-instagram"></i> Tag us on Instagram</a></li>
-                            <li><a className="dropdown-item" href="/"><i className="fab fa-twitter"></i> Follow us on Twitter</a></li>
-                            <li><hr className="dropdown-divider" /></li>
-                            <li><a className="dropdown-item" href="/contact"><i className="far fa-envelope"></i> Contact Us</a></li>
-                        </ul>
-                        </li>
-                    </ul>
-                </div>
-                {loggedUser.check ?
-                    <div className="d-flex">
-                        <span className="text-danger">{loggedUser.userInfo.firstName}</span>
-                        <button className="btn btn-outline-danger" onClick={logout}>Logout</button>
-                    </div>
-                :
+        <div>
+            {/* Homepage & Login/Reg */}
+            <nav className="navbar navbar-light bg-success bg-gradient py-md-1">
+                <div className="container-fluid">
+                    <a className="navbar-brand" href="/">
+                        <img src="https://www.seekpng.com/png/full/51-510863_cartoon-tortoise-shell-image-turtle.png" alt="" width="30" height="24" />Turts&Torts
+                    </a>
+                    {loggedUser.check ?
+                        <div className="d-flex">
+                            <Link className="nav-link text-dark" to="/profile">Profile</Link>
+                            <button className="btn btn-sm btn-outline-dark" onClick={logout}>Logout</button>
+                        </div>
+                    :
                     <div className="navbar-item">
-                        <button className="btn btn-outline-light" onClick={popLogin}>Login</button>
-                    </div>
-                }
+                        <button className="btn btn-sm btn-outline-dark" onClick={popLogin}>Sign in or Create Account</button>
+                        </div>
+                    }
+                </div>
+                {modal ? <Login toggle={popLogin} /> : ""}
+            </nav>
+
+            {/* Page Linker */}
+            <div className="d-flex justify-content-around bg-light p-1">
+                <Link className="btn btn-sm text-success" to="/">Care Guide</Link>
+                <span>|</span>
+                <Link className="btn btn-sm text-success" to="/">Turtles for Sale</Link>
+                <span>|</span>
+                <Link className="btn btn-sm text-success" to="/">Tortoise for Sale</Link>
+                <span>|</span>
+                <Link className="btn btn-sm text-success" to="/">Supplies for Sale</Link>
             </div>
-            {modal ? <Login toggle={popLogin} /> : ""}
-        </nav>
+        </div>
     )
 }
 

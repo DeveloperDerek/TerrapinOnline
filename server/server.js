@@ -19,8 +19,7 @@ app.use("/api/user/", require("./routes/user.route"));
 app.use("/api/product/", require("./routes/product.route"));
 app.use("/api/cart/", require("./routes/cart.route"));
 app.use("/api/order/", require("./routes/order.route"));
-app.use("/api/tortoise/", require("./routes/tortoise.route"));
-app.use("/api/turtle/", require("./routes/turtle.route"));
+app.use("/api/animal/", require("./routes/animal.route"));
 
 app.listen(process.env.PORT, () => 
     console.log(`Listening on port ${process.env.PORT}`)
