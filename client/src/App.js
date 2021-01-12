@@ -7,6 +7,11 @@ import HomePage from "./views/HomePage";
 import ProductPage from "./views/ProductPage";
 import CartPage from "./views/CartPage";
 import CarePage from "./views/CarePage";
+import AnimalPage from "./views/AnimalPage";
+import TermsAndConditionPage from "./views/TermsConditionPage";
+import ShippingReturnPage from "./views/ShippingReturns";
+import PrivacyNotice from "./views/PrivacyNotice";
+import ContactPage from "./views/ContactPage";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({
@@ -34,7 +39,12 @@ function App() {
           <HomePage path="/" />
           <ProductPage path="/product/:id" />
           <CartPage path="/cart" />
-          <CarePage path="/careguide" />
+          <CarePage path="/care-guide" />
+          <AnimalPage path="/about/:id" /> 
+          <TermsAndConditionPage path="/terms-and-condition" />
+          <ShippingReturnPage path="/shipping-and-return" />
+          <PrivacyNotice path="/privacy-notice" />
+          <ContactPage path="/contact-us" />
         </Router>
       </UserContext.Provider>
     </div>

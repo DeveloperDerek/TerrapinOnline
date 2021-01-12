@@ -10,9 +10,6 @@ const animalSchema = new Mongoose.Schema(
             type: String,
             required: true
         },
-        scientificName: {
-            type: String
-        },
         description: {
             type: String
         },
@@ -23,6 +20,9 @@ const animalSchema = new Mongoose.Schema(
             type: String
         },
         size: {
+            type: String
+        },
+        lifespan: {
             type: String
         },
         care: {

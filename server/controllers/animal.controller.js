@@ -27,7 +27,7 @@ module.exports = {
             .catch((err) => res.status(400).json(err))
     },
     update(req, res) {
-        Animal.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, context: 'query' })
+        Animal.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, context: 'query', upsert: true, new: true })
             .then((updated) => res.json(updated))
             .catch((err) => res.status(400).json(err));
     },

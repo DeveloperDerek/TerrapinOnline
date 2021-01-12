@@ -49,7 +49,7 @@ const Navbar = () => {
 
             {/* Page Linker */}
             <div className="d-flex justify-content-around bg-light p-1">
-                <Link className="btn btn-sm text-success" to="/careguide">Care Guide</Link>
+                <Link className="btn btn-sm text-success" to="/care-guide">Care Guide</Link>
                 <span>|</span>
                 <Link className="btn btn-sm text-success" to="/">Turtles for Sale</Link>
                 <span>|</span>

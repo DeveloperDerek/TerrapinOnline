@@ -8,6 +8,9 @@ const Footer = () => {
                 <div className="d-flex justify-content-around">
                     <div className="col text-center text-secondary">
                         <h5>Contact Us</h5>
+                        <div>
+                            <Link className="text-decoration-none text-secondary" to="/contact-us">Email Us</Link>
+                        </div>
                         <div>1725 Slough Avenue</div>
                         <div>Scranton, PA. 18505</div>
                         <div>#1-800-313-9286</div>
@@ -15,13 +18,13 @@ const Footer = () => {
                     <div className="col text-center text-secondary">
                         <h5>Information</h5>
                         <div>
-                            <Link className="text-decoration-none text-secondary" to="/">Shipping & Returns</Link>
+                            <Link className="text-decoration-none text-secondary" to="/terms-and-condition">Terms & Conditions</Link>
                         </div>
                         <div>
-                            <Link className="text-decoration-none text-secondary" text-secondary to="/">Terms and Conditions</Link>
+                            <Link className="text-decoration-none text-secondary" to="/shipping-and-return">Shipping & Returns</Link>
                         </div>
                         <div>
-                            <Link className="text-decoration-none text-secondary" to="/">Privacy Notice</Link>
+                            <Link className="text-decoration-none text-secondary" to="/privacy-notice">Privacy Notice</Link>
                         </div>
                     </div>
                     <div className="col text-center text-secondary">
@@ -41,9 +44,9 @@ const Footer = () => {
                             <h5>Newsletter</h5>
                             <div>Sign up for our newsletter</div>
                         </div>
-                        <div class="input-group input-group-sm">
-                            <input type="text" class="form-control" placeholder="Enter your email address" />
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
+                        <div className="input-group input-group-sm">
+                            <input type="text" className="form-control" placeholder="Enter your email address" />
+                            <button className="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
                         </div>
                     </div>
                 </div>
