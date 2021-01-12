@@ -6,6 +6,7 @@ import { UserContext } from "./utils/UserContext";
 import HomePage from "./views/HomePage";
 import ProductPage from "./views/ProductPage";
 import CartPage from "./views/CartPage";
+import CarePage from "./views/CarePage";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({
@@ -33,6 +34,7 @@ function App() {
           <HomePage path="/" />
           <ProductPage path="/product/:id" />
           <CartPage path="/cart" />
+          <CarePage path="/careguide" />
         </Router>
       </UserContext.Provider>
     </div>

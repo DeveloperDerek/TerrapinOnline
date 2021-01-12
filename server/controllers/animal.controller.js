@@ -12,17 +12,17 @@ module.exports = {
             .catch((err) => res.status(400).json(err))
     },
     findAll(req, res) {
-        Animal.find()
+        Animal.find().sort({ commonName: 1 })
             .then((animal) => res.json(animal))
             .catch((err) => res.status(400).json(err))
     },
     findTurtles(req, res) {
-        Animal.find({ category: turtle })
+        Animal.find({ category: turtle }).sort({ commonName: 1 })
             .then((turt) => res.json(turt))
             .catch((err) => res.status(400).json(err))
     },
     findTortoises(req, res) {
-        Animal.find({ category: tortoise })
+        Animal.find({ category: tortoise }).sort({ commonName: 1 })
             .then((tort) => res.json(tort))
             .catch((err) => res.status(400).json(err))
     },

@@ -19,13 +19,13 @@ const HomePage = () => {
                                 </ol>
                                 <div className="carousel-inner">
                                     <div className="carousel-item active">
-                                        <img src="https://images.unsplash.com/photo-1597162216923-ba6d99390c10?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" className="img-fluid d-block w-100" alt="..." />
+                                        <img src="https://images.unsplash.com/photo-1597162216923-ba6d99390c10?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" className="img-fluid rounded d-block w-100" alt="..." />
                                     </div>
                                     <div className="carousel-item">
-                                        <img src="https://images.unsplash.com/photo-1556007267-06d965ed0054?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" className="img-fluid d-block w-100" alt="..." />
+                                        <img src="https://images.unsplash.com/photo-1556007267-06d965ed0054?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" className="img-fluid rounded d-block w-100" alt="..." />
                                     </div>
                                     <div className="carousel-item">
-                                        <img src="https://images.unsplash.com/photo-1590689538707-53f3e07ebe97?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1047&q=80" className="img-fluid d-block w-100" alt="..." />
+                                        <img src="https://images.unsplash.com/photo-1590689538707-53f3e07ebe97?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1047&q=80" className="img-fluid rounded d-block w-100" alt="..." />
                                     </div>
                                 </div>
                                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -47,7 +47,7 @@ const HomePage = () => {
                     <section className="text-center px-5">
                         <h1 className="display-6">Turts&Torts Online</h1>
                         <p>Welcome to the Turts&Torts online store, we offer the widest selection of captive bred turtles and tortoises for sale anywhere in the United States! Place your order online 24/7 or call us toll free at 1-800-313-9286. We have staff available to help Monday through Friday from 8am to 5pm eastern time.</p>
-                        <p>Turts&Torts specialize in healthy and vibrant reptiles. All of our reptiles come with a 7-day health guarantee and we stand by all our new tortoise an turtles for sale. When purchasing from our site you can be sure to recieve great customer service. We ship all our healthy reptiles via UPS overnight in a heated and insulated package to their transport to you safe and comfortable.</p>
+                        <p>Turts&Torts specialize in healthy and vibrant reptiles. We are reptile enthusiasts who believe cative breeding is integral to the future of the market, as it not only helps protect wild life populations, but is a rewarding experience that tends to intensify one's passion for these prehistoric creatures. All of our reptiles come with a 7-day health guarantee and we stand by all our new tortoise an turtles for sale. When purchasing from our site you can be sure to recieve great customer service. We ship all our healthy reptiles via UPS overnight in a heated and insulated package to make their transport to your destination safe and comfortable.</p>
                         <p>Our aquatic turtles for sale are all 100% born and raised in captivity. We offer a wide selection of different aquatic turtles from all around the world available in all sizes from hatchlings to mature adults. Although saltwater turtles are not available, we do have the brackish water diamondback terrapin a highly suggested turtle.</p>
                         <p>Our land tortoises for sale come in many different sizes. We have small tortoises that range from 4 inches to 8 inches max, medium tortoises that range from 9 to 16 inches max, and large tortoises that grow 18 inches. Such as the Sulcata Tortoise which grow towards 30 inches and can weigh over 200 lbs</p>
                     </section>

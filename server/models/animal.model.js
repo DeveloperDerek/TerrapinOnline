@@ -3,10 +3,12 @@ const Mongoose = require("mongoose");
 const animalSchema = new Mongoose.Schema(
     {
         category: {
-            type: String
+            type: String,
+            required: true
         },
         commonName: {
-            type: String
+            type: String,
+            required: true
         },
         scientificName: {
             type: String

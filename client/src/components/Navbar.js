@@ -32,8 +32,11 @@ const Navbar = () => {
                     </a>
                     {loggedUser.check ?
                         <div className="d-flex">
-                            <Link className="nav-link text-dark" to="/profile">Profile</Link>
+                            <Link className="btn btn-sm btn-outline-dark" to="/profile">Profile</Link>
                             <button className="btn btn-sm btn-outline-dark" onClick={logout}>Logout</button>
+                            <button className="btn btn-sm btn-outline-dark">
+                                <i className="las la-shopping-cart"></i>
+                            </button>
                         </div>
                     :
                     <div className="navbar-item">
@@ -46,7 +49,7 @@ const Navbar = () => {
 
             {/* Page Linker */}
             <div className="d-flex justify-content-around bg-light p-1">
-                <Link className="btn btn-sm text-success" to="/">Care Guide</Link>
+                <Link className="btn btn-sm text-success" to="/careguide">Care Guide</Link>
                 <span>|</span>
                 <Link className="btn btn-sm text-success" to="/">Turtles for Sale</Link>
                 <span>|</span>
