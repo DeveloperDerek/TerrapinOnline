@@ -55,7 +55,7 @@ const Navbar = () => {
                 <span>|</span>
                 <Link className="btn btn-sm text-success" to="/">Tortoise for Sale</Link>
                 <span>|</span>
-                <Link className="btn btn-sm text-success" to="/">Supplies for Sale</Link>
+                <Link className="btn btn-sm text-success" to="/supplies">Supplies for Sale</Link>
             </div>
         </div>
     )

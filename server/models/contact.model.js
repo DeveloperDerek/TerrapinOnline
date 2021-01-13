@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const Mongoose = require("mongoose");
 
-const Schema = mongoose.Schema;
+const Schema = Mongoose.Schema;
 
 const contactSchema = new Schema(
     {
@@ -31,4 +31,4 @@ const contactSchema = new Schema(
     {timestamps: true}
 )
 
-module.exports = mongoose.model("Contact", contactSchema);
+module.exports = Mongoose.model("Contact", contactSchema);

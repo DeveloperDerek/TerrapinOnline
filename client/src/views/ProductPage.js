@@ -11,7 +11,10 @@ const ProductPage = (props) => {
     useEffect(() => {
         axios
         .get(`http://localhost:8000/api/product/view/${id}`)
-        .then((res) => setProduct(res.data))
+        .then((res) => {
+            console.log(res.data);
+            setProduct(res.data);
+        })
         .catch(err => console.log(err))
     }, [])
 
@@ -33,6 +36,7 @@ const ProductPage = (props) => {
             <Navbar />
             <div className="container">
                 <div>{product.title}</div>
+                <img src={`${product.imageKey}`} />
                 <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
                 <button onClick={() => addToCart(product._id, product.price, quantity)}>Add to Cart</button>
             </div>

@@ -30,6 +30,9 @@ const Footer = () => {
                     <div className="col text-center text-secondary">
                         <h5>Categories</h5>
                         <div>
+                            <Link className="text-decoration-none text-secondary" to="/care-guide">Care Guide</Link>
+                        </div>
+                        <div>
                             <Link className="text-decoration-none text-secondary" to="/">Turtles</Link>
                         </div>
                         <div>

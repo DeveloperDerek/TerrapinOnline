@@ -27,6 +27,7 @@ const CartPage = () => {
                 {cart.cartItems.map((item, idx) => {
                     return(
                         <div key={idx}>
+                            <img src={`${item.product.imageKey}`} />
                             <div>{item.title}</div>
                             <div>{item.product.price}</div>
                             <div>{item.product.description}</div>

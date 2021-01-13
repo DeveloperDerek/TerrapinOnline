@@ -15,8 +15,10 @@ app.use(express.json()); // alows req.body
 app.use(cors({ credentials: true, origin: "http://localhost:3000" })); // client to server
 
 app.use("/api/google/", require("./routes/google.route"));
+app.use("/api/contact/", require("./routes/contact.route"));
 app.use("/api/user/", require("./routes/user.route"));
 app.use("/api/product/", require("./routes/product.route"));
+app.use("/api/category/", require("./routes/category.route"));
 app.use("/api/cart/", require("./routes/cart.route"));
 app.use("/api/order/", require("./routes/order.route"));
 app.use("/api/animal/", require("./routes/animal.route"));

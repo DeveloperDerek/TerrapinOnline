@@ -16,6 +16,16 @@ module.exports = {
             .then((product) => res.json(product))
             .catch((err) => res.status(400).json(err))
     },
+    findTurtles(req, res) {
+        Product.find({ category: turtle }).sort({ title: 1 })
+            .then((product) => res.json(product))
+            .catch((err) => res.status(400).json(err))
+    },
+    findTortoises(req, res) {
+        Product.find({ category: tortoise }).sort({ title: 1 })
+            .then((product) => res.json(product))
+            .catch((err) => res.status(400).json(err))
+    },
     update(req, res) {
         Product.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, context: 'query' })
             .then((updated) => res.json(updated))

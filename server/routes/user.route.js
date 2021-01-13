@@ -6,7 +6,7 @@ router.post("/register", userController.register);
 
 router.get("/getall", userController.getAll);
 // router.get("/user/:id", userController.getOne);
-router.put("/delete/:id", userController.delete);
+router.delete("/delete/:id", userController.delete);
 router.put("/update/:id", userController.update);
 
 router.post("/login", userController.login);

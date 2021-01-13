@@ -12,6 +12,8 @@ import TermsAndConditionPage from "./views/TermsConditionPage";
 import ShippingReturnPage from "./views/ShippingReturns";
 import PrivacyNotice from "./views/PrivacyNotice";
 import ContactPage from "./views/ContactPage";
+import CreateProduct from "./views/CreateProduct";
+import SuppliesPage from "./views/SuppliesPage";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({
@@ -45,6 +47,8 @@ function App() {
           <ShippingReturnPage path="/shipping-and-return" />
           <PrivacyNotice path="/privacy-notice" />
           <ContactPage path="/contact-us" />
+          <CreateProduct path="/create-product" />
+          <SuppliesPage path="/supplies" />
         </Router>
       </UserContext.Provider>
     </div>
