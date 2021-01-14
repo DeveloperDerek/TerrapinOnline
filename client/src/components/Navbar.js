@@ -34,9 +34,9 @@ const Navbar = () => {
                         <div className="d-flex">
                             <Link className="btn btn-sm btn-outline-dark" to="/profile">Profile</Link>
                             <button className="btn btn-sm btn-outline-dark" onClick={logout}>Logout</button>
-                            <button className="btn btn-sm btn-outline-dark">
+                            <Link to="/cart" className="btn btn-sm btn-outline-dark">
                                 <i className="las la-shopping-cart"></i>
-                            </button>
+                            </Link>
                         </div>
                     :
                     <div className="navbar-item">

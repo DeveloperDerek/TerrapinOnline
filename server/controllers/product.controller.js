@@ -1,10 +1,15 @@
 const Product = require("../models/product.model");
+const Category = require("../models/category.model");
 
 module.exports = {
-    create(req, res) {
-        Product.create(req.body)
-            .then((product) => res.json(product))
-            .catch((err) => res.status(400).json(err))
+    async create(req, res) {
+        const newProduct = await Product.create(req.body)
+        const cat = await Category.findOneAndUpdate(
+            { _id: req.body.id },
+            { $addToSet: {products: newProduct._id} },
+            { upsert: true, new: true}
+        )
+        return res.json(newProduct)
     },
     findOne(req, res) {
         Product.findById({ _id: req.params.id})

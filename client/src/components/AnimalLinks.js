@@ -26,7 +26,7 @@ const AnimalLinks = () => {
                         if(turt.category === "turtle"){
                             return(
                                 <li className="list-group-item" key={idx}>
-                                    <a href={`/about/${turt._id}`}>{turt.commonName}</a>
+                                    <a className="text-decoration-none" href={`/about/${turt._id}`}>{turt.commonName}</a>
                                 </li>
                             )
                         }
@@ -41,7 +41,7 @@ const AnimalLinks = () => {
                             if(tort.category === "tortoise"){
                                 return(
                                     <li className="list-group-item" key={idx}>
-                                        <a href={`/about/${tort._id}`}>{tort.commonName}</a>
+                                        <a className="text-decoration-none" href={`/about/${tort._id}`}>{tort.commonName}</a>
                                     </li>
                                 )
                             }

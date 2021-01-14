@@ -8,6 +8,7 @@ const categorySchema = new Mongoose.Schema(
         },
         description: {
             type: String,
+            default: ""
         },
         products : [{
                 type: Mongoose.Schema.ObjectId,

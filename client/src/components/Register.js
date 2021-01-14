@@ -35,7 +35,7 @@ const Register = (props) => {
     }
 
     return (
-        <div className="modal-dialog www" role="document">
+        <div className="modal-dialog width50" role="document">
             <div className="modal-content">
                 <div className="modal-header">
                     <p className="modal-title lead">Register</p>

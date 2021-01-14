@@ -6,25 +6,30 @@ import Navbar from "../components/Navbar";
 const CartPage = () => {
     const [cart, setCart] = useState(null)
 
-    useEffect(() => {
-        axios
+    const getCart = async () => {
+        await axios
         .get("http://localhost:8000/api/cart/view", { withCredentials: true })
         .then((res) => {
-            console.log(res.data)
             setCart(res.data)
         })
-        .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        getCart();
     }, [])
 
     if (cart === null) {
-        return(<div>loading...</div>)
+        axios.post("http://localhost:8000/api/cart/create", { withCredentials: true })
+            .then((res) => setCart(res.data))
     }
+
+
 
     return(
         <div>
             <Navbar />
             <div className="container">
-                {cart.cartItems.map((item, idx) => {
+                {/* {cart.cartItems.map((item, idx) => {
                     return(
                         <div key={idx}>
                             <img src={`${item.product.imageKey}`} />
@@ -36,7 +41,7 @@ const CartPage = () => {
                             <hr />
                         </div>
                     )
-                })}
+                })} */}
             </div>
         </div>
     )

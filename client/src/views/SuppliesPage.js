@@ -1,35 +1,21 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import SupplyLink from "../components/SupplyLink";
 
-
-const SuppliesPage = () => {
-    const [supplies, setSupplies] = useState(null);
-
-    useEffect(() => {
-        axios
-        .get("http://localhost:8000/api/category/view-products")
-        .then((res) => {
-            console.log(res.data);
-            setSupplies(res.data);
-        })
-        .catch(err => console.log(err));
-    }, [])
-
-    if (supplies === null) {
-        return(<div>Loading...</div>)
-    }
-
+const CategoryPage = () => {
     return(
-        <div>
+        <div className="">
             <Navbar />
                 <div className="container-fluid">
-                    
+                    <div className="row p-3">
+                        <SupplyLink />
+                        <div className="col"></div>
+                    </div>
                 </div>
             <Footer />
         </div>
     )
 }
 
-export default SuppliesPage;
+export default CategoryPage;

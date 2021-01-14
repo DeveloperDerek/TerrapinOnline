@@ -7,7 +7,7 @@ module.exports = {
             .catch((err) => res.status(400).json(err))
     },
     getAll(req, res) {
-        Category.find()
+        Category.find().sort({ name: 1})
             .then((categorys) => res.json(categorys))
             .catch((err) => res.status(400).json(err))
     },
@@ -30,7 +30,7 @@ module.exports = {
         return res.json(cat)
     },
     async viewProducts(req, res) {
-        const cat = await Category.find().populate('products')
+        const cat = await Category.findOne({ _id: req.params.id }).populate('products')
         res.json(cat);
     }
 }

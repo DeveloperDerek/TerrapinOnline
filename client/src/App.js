@@ -14,6 +14,7 @@ import PrivacyNotice from "./views/PrivacyNotice";
 import ContactPage from "./views/ContactPage";
 import CreateProduct from "./views/CreateProduct";
 import SuppliesPage from "./views/SuppliesPage";
+import CategoryPage from "./views/CategoryPage";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({
@@ -49,6 +50,7 @@ function App() {
           <ContactPage path="/contact-us" />
           <CreateProduct path="/create-product" />
           <SuppliesPage path="/supplies" />
+          <CategoryPage path="/category/:name/:id" />
         </Router>
       </UserContext.Provider>
     </div>

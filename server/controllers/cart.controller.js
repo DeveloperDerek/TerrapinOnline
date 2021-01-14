@@ -1,6 +1,13 @@
 const Cart = require("../models/cart.model");
 
 module.exports = {
+    async create(req, res) {
+        const cart = new Cart({
+            user: req.user._id
+        })
+        const newCart = await cart.save();
+        res.status(201).json(newCart);
+    },
     async addToCart(req, res) {
         const userCart = await Cart.findOneAndUpdate(
             { user: req.user._id} ,

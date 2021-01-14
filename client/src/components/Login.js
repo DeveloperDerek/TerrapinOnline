@@ -34,7 +34,7 @@ const Login = (props) => {
     }
 
     return(
-        <div className="popup container container-fluid">
+        <div className="popup container-fluid">
             {logReg ? 
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
