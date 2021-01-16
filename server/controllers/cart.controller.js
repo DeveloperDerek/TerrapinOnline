@@ -1,13 +1,6 @@
 const Cart = require("../models/cart.model");
 
 module.exports = {
-    async create(req, res) {
-        const cart = new Cart({
-            user: req.user._id
-        })
-        const newCart = await cart.save();
-        res.status(201).json(newCart);
-    },
     async addToCart(req, res) {
         const userCart = await Cart.findOneAndUpdate(
             { user: req.user._id} ,
@@ -26,6 +19,14 @@ module.exports = {
         const cart = await Cart.findOne({user: req.user._id})
             .populate('cartItems.product')
             // // .populate lets you reference documents in other collections
-        res.json(cart);
+        if (cart === null) {
+            const newCart = new Cart({
+                user: req.user._id
+            })
+            const sendCart = await newCart.save();
+            res.status(201).json(sendCart);
+        } else {
+            res.json(cart)
+        }
     }
 }
