@@ -15,6 +15,7 @@ import ContactPage from "./views/ContactPage";
 import CreateProduct from "./views/CreateProduct";
 import SuppliesPage from "./views/SuppliesPage";
 import CategoryPage from "./views/CategoryPage";
+import ProfilePage from "./views/ProfilePage";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({
@@ -51,6 +52,7 @@ function App() {
           <CreateProduct path="/create-product" />
           <SuppliesPage path="/supplies" />
           <CategoryPage path="/category/:name/:id" />
+          <ProfilePage path="/profile" />
         </Router>
       </UserContext.Provider>
     </div>

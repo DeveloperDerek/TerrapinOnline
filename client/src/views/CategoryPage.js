@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { navigate, Link } from "@reach/router";
+import { navigate } from "@reach/router";
 
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -54,7 +54,7 @@ const CategoryPage = (props) => {
                                 {category.products.map((product, idx) => {
                                     return(
                                         <div className="col-4 p-3" key={idx}>
-                                            <div className="card border border-dark text-secondary text-center fill-vertical">
+                                            <div className="card border border-dark text-secondary text-center fill-in">
                                                 <img className="card-img-top img-fluid p-4 hover" src={`${product.imageKey}`} alt="product" onClick={() => navigate(`/product/${product._id}`)}/>
                                                 <div className="card-body border-top border-dark">
                                                     <h6 className="card-title">

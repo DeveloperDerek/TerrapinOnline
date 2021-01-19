@@ -6,11 +6,20 @@
     transform: translate(-50%, -50%);
 }
 
+.cart-popup {
+    height: 65%;
+    overflow: auto;
+}
+
 .width50 {
     width: 50%
 }
 
 .fill-vertical {
+    min-height: 100vh;
+}
+
+.fill-in {
     min-height: 100%;
 }
 
@@ -27,3 +36,8 @@
 .hover {
     cursor: pointer;
 }
+
+.blur {
+    opacity: 0.25;
+}
+

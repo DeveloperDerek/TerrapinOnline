@@ -27,11 +27,46 @@ module.exports = {
             .then(user => console.log(user))
             .catch(err => console.log(err))
     },
+    async passwordcheck(req, res) {
+        try {
+            const user = await User.findById(req.user._id);
+            const check = await bcrypt.compare(req.body.oldPassword, user.password);
+            if (check) {
+                return res.json(user)
+            } else {
+                return res.status(400).json({ msg: "invalid password" });
+            }
+        } catch(err) {
+            console.log(err)
+        }
+    },
     // UPDATE: Update one user by id, re-running validators on any changed fields
-    update(req, res) {
-        User.findByIdAndUpdate(req.params.id, req.body, { runValidators: true, context: 'query' })
-            .then((updatedUser) => res.json(updatedUser))
-            .catch((err) => res.status(400).json(err));
+    async update(req, res) {
+        const user = await User.findById(req.user._id);
+        const check = await bcrypt.compare(req.body.oldPassword, user.password);
+        if(check) {
+            console.log(check, "success")
+            await User.findByIdAndUpdate(req.user._id, req.body, { 
+                runValidators: true,
+                context: 'query',
+                upsert: true,
+                new: true 
+            })
+                .then((updatedUser) => res.json(updatedUser))
+                .catch((err) => res.status(400).json(err));
+        } else {
+            cconsole.log("fail", check)
+            res.status(400).json({ msg: "invalid password" });
+        }
+            // .then((passwordIsValid) => {
+            //     if (passwordIsValid) {
+            //         User.findByIdAndUpdate(req.user._id, req.body, { runValidators: true, context: 'query', upsert: true, new: true })
+            //             .then((updatedUser) => res.json(updatedUser))
+            //             .catch((err) => res.status(400).json(err));
+            //     } else {
+            //         res.status(400).json({ msg: "invalid password" });
+            //     }
+            // })
     },
     // LOGIN: If email and password are valid, grant access
     login(req, res) {

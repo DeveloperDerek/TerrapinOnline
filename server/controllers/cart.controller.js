@@ -15,6 +15,18 @@ module.exports = {
         )
         return res.json(userCart)
     },
+    async removeFromCart(req, res) {
+        const userCart = await Cart.findOneAndUpdate(
+            { user: req.user._id} ,
+            { $pull: 
+                {cartItems:{
+                    _id: req.body.cartItem
+                }}
+            },
+            { upsert: true, new: true}
+        )
+        return res.json(userCart)
+    },
     async viewCart(req, res) {
         const cart = await Cart.findOne({user: req.user._id})
             .populate('cartItems.product')

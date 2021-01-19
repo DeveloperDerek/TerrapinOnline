@@ -15,8 +15,7 @@ const orderSchema = Mongoose.Schema(
         shippingAddress: {
             address: { type: String, required: true },
             city: { type: String, required: true },
-            postalCode: { type: String, required: true },
-            country: { type: String, required: true },
+            postalCode: { type: String, required: true }
         },
         taxPrice: {
             type: Number,
@@ -32,6 +31,15 @@ const orderSchema = Mongoose.Schema(
             type: Number,
             required: true,
             default: 0.0,
+        },
+        status: {
+            type: Number,
+            enums: [
+                1,    //'processing',
+                2,    //'shipping',
+                3,    //'shipped'
+            ],
+            default: 1
         }
     },{timestamps: true,}
 )

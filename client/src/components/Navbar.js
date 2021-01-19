@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link } from "@reach/router";
 import { UserContext } from "../utils/UserContext";
@@ -7,6 +7,19 @@ import Login from "./Login";
 const Navbar = () => {
     const {loggedUser} = useContext(UserContext);
     const [modal, setModal] = useState(false);
+    const [cart, setCart] = useState(null);
+    const [length, setLength] = useState("");
+
+    useEffect(() => {
+        axios
+        .get("http://localhost:8000/api/cart/view", { withCredentials: true })
+        .then((res) => {
+            setCart(res.data)
+            setLength(res.data.cartItems.length)
+            console.log(res.data)
+        })
+    }, [])
+
 
     const popLogin = () => {
         setModal(!modal);
@@ -35,7 +48,7 @@ const Navbar = () => {
                             <Link className="btn btn-sm btn-outline-dark" to="/profile">Profile</Link>
                             <button className="btn btn-sm btn-outline-dark" onClick={logout}>Logout</button>
                             <Link to="/cart" className="btn btn-sm btn-outline-dark">
-                                <i className="las la-shopping-cart"></i>
+                                <span>({length})</span><i className="las la-shopping-cart"></i>
                             </Link>
                         </div>
                     :
