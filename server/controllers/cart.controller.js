@@ -40,5 +40,10 @@ module.exports = {
         } else {
             res.json(cart)
         }
+    },
+    async viewCartID(req, res) {
+        const c = await Cart.findOne({ _id: req.params.id})
+            .populate('cartItems.product')
+        return res.json(c)
     }
 }

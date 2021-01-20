@@ -41,7 +41,7 @@ const orderSchema = Mongoose.Schema(
             ],
             default: 1
         }
-    },{timestamps: true,}
+    },{timestamps: true}
 )
 
 const Order = Mongoose.model('Order', orderSchema)

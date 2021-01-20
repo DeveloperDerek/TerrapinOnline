@@ -34,7 +34,7 @@ module.exports = {
             if (check) {
                 return res.json(user)
             } else {
-                return res.status(400).json({ msg: "invalid password" });
+                return res.status(400).json({ msg: "Invalid Password" });
             }
         } catch(err) {
             console.log(err)
@@ -42,31 +42,38 @@ module.exports = {
     },
     // UPDATE: Update one user by id, re-running validators on any changed fields
     async update(req, res) {
-        const user = await User.findById(req.user._id);
-        const check = await bcrypt.compare(req.body.oldPassword, user.password);
-        if(check) {
-            console.log(check, "success")
-            await User.findByIdAndUpdate(req.user._id, req.body, { 
-                runValidators: true,
-                context: 'query',
-                upsert: true,
-                new: true 
-            })
-                .then((updatedUser) => res.json(updatedUser))
-                .catch((err) => res.status(400).json(err));
-        } else {
-            cconsole.log("fail", check)
-            res.status(400).json({ msg: "invalid password" });
+        User.findByIdAndUpdate(req.user._id, req.body, { 
+            runValidators: true,
+            context: 'query',
+            upsert: true,
+            new: true 
+        })
+            .then((updatedUser) => res.json(updatedUser))
+            .catch((err) => res.status(400).json(err));
+    },
+    async updatePassword(req, res) {
+        try {
+            const user = await User.findById(req.user._id);
+            const check = await bcrypt.compare(req.body.oldPassword, user.password);
+            if (check) {
+                User.findByIdAndUpdate(
+                    req.user._id,
+                    { password: req.body.password }, 
+                    { 
+                        runValidators: true,
+                        context: 'query',
+                        upsert: true,
+                        new: true 
+                    }
+                )
+                    .then((updatedUser) => res.json(updatedUser))
+                    .catch((err) => res.status(400).json(err));
+            } else {
+                return res.status(400).json({ msg: "Invalid Password" });
+            }
+        } catch(err) {
+            console.log(err)
         }
-            // .then((passwordIsValid) => {
-            //     if (passwordIsValid) {
-            //         User.findByIdAndUpdate(req.user._id, req.body, { runValidators: true, context: 'query', upsert: true, new: true })
-            //             .then((updatedUser) => res.json(updatedUser))
-            //             .catch((err) => res.status(400).json(err));
-            //     } else {
-            //         res.status(400).json({ msg: "invalid password" });
-            //     }
-            // })
     },
     // LOGIN: If email and password are valid, grant access
     login(req, res) {
@@ -90,7 +97,7 @@ module.exports = {
                             )
                             .json({ msg: "response has a cookie"})
                         } else {
-                            res.status(400).json({ msg: "invalid password" });
+                            res.status(400).json({ msg: "Invalid Password" });
                         }
                     })
                     .catch((err) =>
