@@ -1,3 +1,12 @@
+html * {
+    /* the !important ensures that nothing can override what you've set in this style (unless it is also important).  */
+    font-family: Cambria
+}
+
+.f900{
+    font-weight: 900;
+}
+
 .popup {
     position: fixed;
     z-index: 1;
@@ -40,4 +49,5 @@
 .blur {
     opacity: 0.25;
 }
+
 

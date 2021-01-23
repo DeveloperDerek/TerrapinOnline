@@ -9,7 +9,6 @@ export default (props) => {
         try{
             login(res.tokenId);
             toggle();
-            // window.location.reload(false);
         } catch (e) {
             console.log(e)
         }

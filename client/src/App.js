@@ -4,19 +4,21 @@ import axios from "axios";
 import { UserContext } from "./utils/UserContext";
 
 import HomePage from "./views/HomePage";
-import ProductPage from "./views/ProductPage";
-import CartPage from "./views/CartPage";
+import ProductPage from "./views/Sales/ProductPage";
+import CartPage from "./views/Sales/CartPage";
 import CarePage from "./views/CarePage";
 import AnimalPage from "./views/AnimalPage";
-import TermsAndConditionPage from "./views/TermsConditionPage";
-import ShippingReturnPage from "./views/ShippingReturns";
-import PrivacyNotice from "./views/PrivacyNotice";
-import ContactPage from "./views/ContactPage";
-import CreateProduct from "./views/CreateProduct";
-import SuppliesPage from "./views/SuppliesPage";
-import CategoryPage from "./views/CategoryPage";
+import TermsAndConditionPage from "./views/Information/TermsConditionPage";
+import ShippingReturnPage from "./views/Information/ShippingReturns";
+import PrivacyNotice from "./views/Information/PrivacyNotice";
+import ContactPage from "./views/Information/ContactPage";
+import CreateProduct from "./views/Admin/CreateProduct";
+import SuppliesPage from "./views/Sales/SuppliesPage";
+import CategoryPage from "./views/Sales/CategoryPage";
 import ProfilePage from "./views/ProfilePage";
-import OrderPage from "./views/OrderPage";
+import OrderPage from "./views/Sales/OrderPage";
+import TortoiseSalePage from "./views/Sales/TortoiseSalePage";
+import TurtleSalePage from "./views/Sales/TurtleSalePage";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({
@@ -55,6 +57,8 @@ function App() {
           <CategoryPage path="/category/:name/:id" />
           <ProfilePage path="/profile" />
           <OrderPage path="/order/:id" />
+          <TortoiseSalePage path="/tortoise/:id" />
+          <TurtleSalePage path="/turtle/:id" />
         </Router>
       </UserContext.Provider>
     </div>

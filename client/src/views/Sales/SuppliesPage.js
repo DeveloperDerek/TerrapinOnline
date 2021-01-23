@@ -1,7 +1,7 @@
 import React from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import SupplyLink from "../components/SupplyLink";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import SupplyLink from "../../components/SupplyLink";
 
 const CategoryPage = () => {
     return(

@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import { UserContext } from "../utils/UserContext";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import { addZeroes } from "../../utils/AddZeroes";
 
 const OrderPage = (props) => {
     const {id} = props
@@ -34,14 +34,6 @@ const OrderPage = (props) => {
     if(cart === null) {
         return(<div>Loading...</div>)
     }
-
-    const addZeroes = (num) => {
-        const value = toString(num);
-        const dec = value.split('.')[1]
-        const len = dec && dec.length > 2 ? dec.length : 2
-        return Number(num).toFixed(len)
-    }
-
 
     return(
         <div>

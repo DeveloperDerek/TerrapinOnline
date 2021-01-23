@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import { UserContext } from "../utils/UserContext";
 import Login from "./Login";
 
@@ -30,6 +30,7 @@ const Navbar = () => {
             .post("http://localhost:8000/api/user/logout", {}, { withCredentials: true })
             .then((res) => {
                 console.log(res);
+                navigate("/")
                 window.location.reload(false); //to refresh the page
             })
             .catch(console.log);
@@ -48,7 +49,9 @@ const Navbar = () => {
                             <Link className="btn btn-sm btn-outline-dark" to="/profile">Profile</Link>
                             <button className="btn btn-sm btn-outline-dark" onClick={logout}>Logout</button>
                             <Link to="/cart" className="btn btn-sm btn-outline-dark">
-                                <span>({length})</span><i className="las la-shopping-cart"></i>
+                                <span>
+                                    ({length}<i className="f900 las la-shopping-cart"></i>)
+                                </span>
                             </Link>
                         </div>
                     :
@@ -64,9 +67,9 @@ const Navbar = () => {
             <div className="d-flex justify-content-around bg-light p-1">
                 <Link className="btn btn-sm text-success" to="/care-guide">Care Guide</Link>
                 <span>|</span>
-                <Link className="btn btn-sm text-success" to="/">Turtles for Sale</Link>
+                <Link className="btn btn-sm text-success" to="/turtle/600b3fb6394b950b44e29ca1">Turtles for Sale</Link>
                 <span>|</span>
-                <Link className="btn btn-sm text-success" to="/">Tortoise for Sale</Link>
+                <Link className="btn btn-sm text-success" to="/tortoise/600b3fbf394b950b44e29ca2">Tortoise for Sale</Link>
                 <span>|</span>
                 <Link className="btn btn-sm text-success" to="/supplies">Supplies for Sale</Link>
             </div>

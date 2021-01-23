@@ -55,15 +55,14 @@ module.exports = {
         try {
             const user = await User.findById(req.user._id);
             const check = await bcrypt.compare(req.body.oldPassword, user.password);
+            const test = await bcrypt.hash(req.body.password, 10)
             if (check) {
                 User.findByIdAndUpdate(
                     req.user._id,
-                    { password: req.body.password }, 
+                    { password: test }, 
                     { 
                         runValidators: true,
                         context: 'query',
-                        upsert: true,
-                        new: true 
                     }
                 )
                     .then((updatedUser) => res.json(updatedUser))

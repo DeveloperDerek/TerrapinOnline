@@ -8,7 +8,8 @@ const login = async (response) => {
         data: {tokenId: response}
     })
     .then((res) => {
-        console.log(res)
+        console.log(res);
+        window.location.reload(false);
     });
 };
 

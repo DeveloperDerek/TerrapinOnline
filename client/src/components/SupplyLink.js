@@ -24,11 +24,13 @@ const SupplyLink = () => {
                 <h3 className="text-center">Categories</h3>
                 <ul className="list-group list-group-flush">
                     {supplies.map((supply, idx) => {
-                        return(
-                            <li className="list-group-item" key={idx}>
-                                <a className="text-decoration-none" href={`/category/${supply.name}/${supply._id}`}>{supply.name}</a>
-                            </li>
-                        )
+                        if(supply.name !== "Turtle" && supply.name !== "Tortoise") {
+                            return(
+                                <li className="list-group-item" key={idx}>
+                                    <a className="text-decoration-none" href={`/category/${supply.name}/${supply._id}`}>{supply.name}</a>
+                                </li>
+                            )
+                        }
                     })}
                 </ul>
             </div>

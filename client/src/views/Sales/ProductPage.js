@@ -1,10 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
-import { UserContext } from "../utils/UserContext";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import SupplyLink from "../components/SupplyLink";
-import AddedModal from "../components/AddedModal";
+import { UserContext } from "../../utils/UserContext";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import SupplyLink from "../../components/SupplyLink";
+import AddedModal from "../../components/AddedModal";
+import { addZeroes } from "../../utils/AddZeroes";
 
 const ProductPage = (props) => {
     const {loggedUser} = useContext(UserContext);
@@ -40,13 +41,6 @@ const ProductPage = (props) => {
             toggle();
         })
         .catch(err => console.log(err));
-    }
-
-    function addZeroes(num) {
-        const value = toString(num);
-        const dec = value.split('.')[1]
-        const len = dec && dec.length > 2 ? dec.length : 2
-        return Number(num).toFixed(len)
     }
 
     return(

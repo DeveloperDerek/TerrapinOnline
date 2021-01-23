@@ -82,23 +82,18 @@ const Profile = () => {
     // Update user password
     const updatePassword = () => {
         const changes = { oldPassword, password, confirmPassword }
-        if(password === confirmPassword) {
+        if(password !== confirmPassword) {
+            return setErrors({ msg: "Passwords do not match"})
+        } if (password.length <= 4) {
+            return setErrors({ msg: "Password needs to be at least 5 characters"})
+        } else {
             axios
             .post("http://localhost:8000/api/user/updatepassword", changes, { withCredentials: true })
-            .then((res) => {
-                console.log(res.data);
-                cancelEdit();
-                setOldPassword("");
-                setPassword("");
-                setConfirmPassword("");
-                setErrors("");
-            })
+            .then(() => window.location.reload(false))
             .catch((err) => {
                 console.log(err.response.data)
                 setErrors(err.response.data)
             })
-        } else {
-            setErrors({ msg: "Passwords do not match"})
         }
     }
 
@@ -131,38 +126,42 @@ const Profile = () => {
                                 <input className="form-control" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                             }
                         </div>
-                        {edit ? // Enter old password to unlock access to update
+                        {user.googleId || edit === false ? // Enter old password to unlock access to update
+                            ""
+                        :
                             <div className="row py-2">
                                 <label className="form-label"><small>Enter password first to edit info</small></label>
                                 <input className="form-control" type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)}/>
                             </div>
-                        :
-                            ""
                         }
                         {errors.msg ? <p className="text-danger">{errors.msg}</p> : ""}
                         {errors.firstName ? <p>{errors.firstName?.message}</p> : ""}
                         {errors.lastName ? <p>{errors.lastName?.message}</p> : ""}
                         {errors.email ? <p>{errors.email?.message}</p> : ""}
-                        <div className="row py-2">
-                            <div className="col">
-                            {edit ?
-                                // Button to switch to edit user password
-                                <button className="btn btn-outline-primary float-start" onClick={activatePass}>Edit Password</button>
-                            :
-                                // Button to cancel and return to main
-                                <button className="btn btn-outline-secondary float-start" onClick={cancelEdit}>Cancel</button>
-                            }
+                        {user.googleId ? 
+                            <p>Google logins not allowed to change profile info</p>
+                        :
+                            <div className="row py-2">
+                                <div className="col">
+                                {edit ?
+                                    // Button to switch to edit user password
+                                    <button className="btn btn-outline-primary float-start" onClick={activatePass}>Edit Password</button>
+                                    :
+                                    // Button to cancel and return to main
+                                    <button className="btn btn-outline-secondary float-start" onClick={cancelEdit}>Cancel</button>
+                                }
+                                </div>
+                                <div className="col">
+                                {edit ?
+                                    // Button to give access to edit user info after entering password 
+                                    <button className="btn btn-outline-primary float-end" onClick={activateEdit}>Edit Info</button>
+                                    :
+                                    // Button to save changes to user info
+                                    <button className="btn btn-outline-primary float-end" onClick={updateInfo}>Save</button>
+                                }
+                                </div>
                             </div>
-                            <div className="col">
-                            {edit ?
-                                // Button to give access to edit user info after entering password 
-                                <button className="btn btn-outline-primary float-end" onClick={activateEdit}>Edit Info</button>
-                            :
-                                // Button to save changes to user info
-                                <button className="btn btn-outline-primary float-end" onClick={updateInfo}>Save</button>
-                            }
-                            </div>
-                        </div>
+                        }
                     </div>
                 : // Edit User Password
                     <div>

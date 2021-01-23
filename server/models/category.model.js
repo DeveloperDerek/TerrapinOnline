@@ -11,8 +11,8 @@ const categorySchema = new Mongoose.Schema(
             default: ""
         },
         products : [{
-                type: Mongoose.Schema.ObjectId,
-                ref: 'Product'
+            type: Mongoose.Schema.ObjectId,
+            ref: 'Product'
         }],
         imageKey: {
             type: String

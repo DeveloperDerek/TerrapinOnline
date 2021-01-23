@@ -1,7 +1,8 @@
-import React, { useState, useContext, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import { addZeroes } from "../../utils/AddZeroes";
 
 const CartPage = () => {
     const [cart, setCart] = useState(null)
@@ -49,13 +50,6 @@ const CartPage = () => {
             console.log(res.data)
             setClick(!click);
         })
-    }
-
-    const addZeroes = (num) => {
-        const value = toString(num);
-        const dec = value.split('.')[1]
-        const len = dec && dec.length > 2 ? dec.length : 2
-        return Number(num).toFixed(len)
     }
 
     const createOrder = () => {

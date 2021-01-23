@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
+import { addZeroes } from "../../utils/AddZeroes";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
+import AddCartModal from "../../components/AddCartModal";
 
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import SupplyLink from "../components/SupplyLink";
-import AddCartModal from "../components/AddCartModal";
-
-const CategoryPage = (props) => {
+const TortoiseSalePage = (props) => {
     const {id} = props;
     const [category, setCategory] = useState(null);
     const [modal, setModal] = useState(false);
@@ -32,21 +31,14 @@ const CategoryPage = (props) => {
         setModal(!modal);
     }
 
-    function addZeroes(num) {
-        const dec = num.split('.')[1]
-        // Split the input string into two arrays containing integers/decimals
-        const len = dec && dec.length > 2 ? dec.length : 2
-        // If there is no decimal point or only one decimal place found.
-        return Number(num).toFixed(len)
-        // Set the number to two decimal places
-    }
+
 
     return(
         <div className="fill-vertical">
             <Navbar />
                 <div className="container-fluid">
                     <div className="row p-3">
-                        <SupplyLink />
+                        <div className="col-1"></div>
                         <div className="col">
                             <h1 className="text-center display-5">{category.name}</h1>
                             <p className="text-secondary">{category.description}</p>
@@ -71,6 +63,7 @@ const CategoryPage = (props) => {
                                 })}
                             </div>
                         </div>
+                        <div className="col-1"></div>
                     </div>
                     {modal ? <AddCartModal product={product} toggle={cartModal} /> : ""}
                 </div>
@@ -79,5 +72,5 @@ const CategoryPage = (props) => {
     )
 }
 
-export default CategoryPage;
+export default TortoiseSalePage;
 
