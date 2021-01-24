@@ -32,6 +32,10 @@ const orderSchema = Mongoose.Schema(
             required: true,
             default: 0.0,
         },
+        couponcode : {
+            type: String,
+            default: ""
+        },
         status: {
             type: Number,
             enums: [

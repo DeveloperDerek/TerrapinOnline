@@ -7,16 +7,13 @@ import Login from "./Login";
 const Navbar = () => {
     const {loggedUser} = useContext(UserContext);
     const [modal, setModal] = useState(false);
-    const [cart, setCart] = useState(null);
     const [length, setLength] = useState("");
 
     useEffect(() => {
         axios
         .get("http://localhost:8000/api/cart/view", { withCredentials: true })
         .then((res) => {
-            setCart(res.data)
             setLength(res.data.cartItems.length)
-            console.log(res.data)
         })
     }, [])
 
@@ -39,24 +36,24 @@ const Navbar = () => {
     return(
         <div>
             {/* Homepage & Login/Reg */}
-            <nav className="navbar navbar-light bg-success bg-gradient py-md-1">
+            <nav className="navbar navbar-light navbar_bg py-md-1">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="/">
-                        <img src="https://www.seekpng.com/png/full/51-510863_cartoon-tortoise-shell-image-turtle.png" alt="" width="30" height="24" />Turts&Torts
+                        <img src="https://www.seekpng.com/png/full/51-510863_cartoon-tortoise-shell-image-turtle.png" alt="" width="30" height="24" /><span className="bisque">Turts&Torts</span>
                     </a>
                     {loggedUser.check ?
                         <div className="d-flex">
-                            <Link className="btn btn-sm btn-outline-dark" to="/profile">Profile</Link>
-                            <button className="btn btn-sm btn-outline-dark" onClick={logout}>Logout</button>
-                            <Link to="/cart" className="btn btn-sm btn-outline-dark">
+                            <Link className="btn btn-sm btn-outline-light bisqueborder" to="/profile">Profile</Link>
+                            <button className="btn btn-sm btn-outline-light bisqueborder" onClick={logout}>Logout</button>
+                            <Link to="/cart" className="btn btn-sm btn-outline-light bisqueborder">
                                 <span>
-                                    ({length}<i className="f900 las la-shopping-cart"></i>)
+                                    {length}<i className="f900 las la-shopping-cart "></i>
                                 </span>
                             </Link>
                         </div>
                     :
-                    <div className="navbar-item">
-                        <button className="btn btn-sm btn-outline-dark" onClick={popLogin}>Sign in or Create Account</button>
+                        <div className="navbar-item">
+                            <button className="btn btn-sm btn-outline-dark bisqueborder" onClick={popLogin}>Sign in or Create Account</button>
                         </div>
                     }
                 </div>
@@ -64,7 +61,7 @@ const Navbar = () => {
             </nav>
 
             {/* Page Linker */}
-            <div className="d-flex justify-content-around bg-light p-1">
+            <div className="d-flex justify-content-around p-1">
                 <Link className="btn btn-sm text-success" to="/care-guide">Care Guide</Link>
                 <span>|</span>
                 <Link className="btn btn-sm text-success" to="/turtle/600b3fb6394b950b44e29ca1">Turtles for Sale</Link>

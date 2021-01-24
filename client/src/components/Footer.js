@@ -3,7 +3,8 @@ import { Link } from "@reach/router";
 
 const Footer = () => {
     return(
-        <div className="bg-light container-fluid py-4">
+        <div className="container-fluid py-4">
+            <hr />
             <div className="row">
                 <div className="d-flex justify-content-around">
                     <div className="col text-center text-secondary">

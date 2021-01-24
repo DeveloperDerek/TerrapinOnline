@@ -7,6 +7,27 @@ html * {
     font-weight: 900;
 }
 
+body {
+    background-color:ivory;
+}
+
+.goldenrod {
+    color: darkgoldenrod
+}
+
+.bisque {
+    color : bisque;
+}
+
+.bisqueborder {
+    border-color: bisque;
+    color : bisque;
+}
+
+.navbar_bg {
+    background-color:seagreen
+}
+
 .popup {
     position: fixed;
     z-index: 1;

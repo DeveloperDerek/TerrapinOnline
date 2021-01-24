@@ -45,7 +45,7 @@ const OrderPage = (props) => {
                         <p className="col">Tax : ${addZeroes(tax)}</p>
                     </div>
                     <div className="text-center row">
-                        <p className="col">Shipping : FREE</p>
+                        <p className="col">Shipping : $0.00</p>
                         <p className="col">Total Cost : ${addZeroes(total)}</p>
                     </div>
                     <div>

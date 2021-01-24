@@ -11,12 +11,14 @@ module.exports = {
             shippingAddress,
             taxPrice,
             shippingPrice,
-            totalPrice
+            totalPrice,
+            couponcode,
         } = req.body
         
         const newOrder = new Order({
             user: req.user._id,
             cart,
+            couponcode,
             shippingAddress,
             taxPrice,
             shippingPrice,
@@ -32,7 +34,7 @@ module.exports = {
             }},
             { upsert: true, new: true}
         )
-        res.status(201).json(clearCart);
+        res.status(201).json(createdOrder);
     },
     // @desc    Get all orders
     // @route   GET /api/orders

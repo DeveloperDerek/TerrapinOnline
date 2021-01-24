@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 
 const HomePage = () => {
     return(
-        <div className="bg-white">
+        <div className="">
             <Navbar />
             <div className="py-3">
                 {/* Carosuel */}
@@ -51,6 +51,67 @@ const HomePage = () => {
                         <p>Our aquatic turtles for sale are all 100% born and raised in captivity. We offer a wide selection of different aquatic turtles from all around the world available in all sizes from hatchlings to mature adults. Although saltwater turtles are not available, we do have the brackish water diamondback terrapin a highly suggested turtle.</p>
                         <p>Our land tortoises for sale come in many different sizes. We have small tortoises that range from 4 inches to 8 inches max, medium tortoises that range from 9 to 16 inches max, and large tortoises that grow 18 inches. Such as the Sulcata Tortoise which grow towards 30 inches and can weigh over 200 lbs</p>
                     </section>
+                </div>
+                <div className="container-fluid">
+                    <p className="display-6 text-center text-success">Featured Products</p>
+                    <div className="row d-flex justify-content-center">
+                        <div className="col-md-6">
+                            <div id="carouselExampleIndicators2" className="carousel slide" data-bs-ride="carousel">
+                                <div className="carousel-inner">
+                                    <div className="carousel-item active p-3">
+                                        <div className="card border border-dark text-secondary text-center fill-in">
+                                            <img className="card-img-top img-fluid p-4" src="https://www.petguide.com/wp-content/uploads/2016/11/stripe-necked-musk-turtle.jpg" alt="product" />
+                                            <div className="card-body border-top border-dark">
+                                                <h6 className="card-title">
+                                                    <a className="text-decoration-none text-secondary" href="/about/5ffccd2655675307e1e99470">Stripe-Neck Musk Turtle</a>
+                                                </h6>
+                                            </div>
+                                            <div>
+                                                <p>$99.99</p>
+                                            </div>
+                                            <a href="/product/600b4a851389880e68328efb" className="btn btn-sm btn-success">ADD TO CART</a>
+                                        </div>
+                                    </div>
+                                    <div className="carousel-item p-3">
+                                        <div className="card border border-dark text-secondary text-center fill-in">
+                                            <img className="card-img-top img-fluid p-4" src="https://zoomed.com/wp-content/uploads/Leopard-tortoise-adult021.jpg" alt="product" />
+                                            <div className="card-body border-top border-dark">
+                                                <h6 className="card-title">
+                                                    <a className="text-decoration-none text-secondary" href="/about/5ffccf3655675307e1e99495">Leopard Tortoise</a>
+                                                </h6>
+                                            </div>
+                                            <div>
+                                                <p>$799.99</p>
+                                            </div>
+                                            <a href="/product/600b52181389880e68328f04" className="btn btn-sm btn-success">ADD TO CART</a>
+                                        </div>
+                                    </div>
+                                    <div className="carousel-item p-3">
+                                        <div className="card border border-dark text-secondary text-center fill-in">
+                                            <img className="card-img-top img-fluid p-4" src="https://cdn10.bigcommerce.com/s-s4f5l4ll/products/178/images/3427/magniflow_360_filter__91664.1458148545.285.365.jpg?c=2" alt="product" />
+                                            <div className="card-body border-top border-dark">
+                                                <h6 className="card-title">
+                                                    <a className="text-decoration-none text-secondary" href="/product/5fff789630e2be08fb998f1d">Fluval 305 Canister Filter</a>
+                                                </h6>
+                                            </div>
+                                            <div>
+                                                <p>$159.99</p>
+                                            </div>
+                                            <a className="btn btn-sm btn-success" href="/product/5fff789630e2be08fb998f1d">ADD TO CART</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a className="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-bs-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="visually-hidden">Previous</span>
+                                </a>
+                                <a className="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-bs-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="visually-hidden">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <Footer />

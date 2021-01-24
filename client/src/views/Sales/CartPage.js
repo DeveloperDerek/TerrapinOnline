@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { navigate } from "@reach/router";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { addZeroes } from "../../utils/AddZeroes";
@@ -9,12 +10,17 @@ const CartPage = () => {
     const [cartItems, setCartItems] = useState("");
     const [tax, setTax] = useState("");
     const [total, setTotal] = useState("");
+    const [couponcode, setCouponcode] = useState("");
+    const [coupon, setCoupon] = useState({
+        code: "",
+        applied: false
+    });
     const [shipping, setShipping] = useState({
         address : "",
         city: "",
         postalCode: ""
     });
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState("");
     const [click, setClick] = useState(false);
 
     const addcartItems = (c) => {
@@ -22,10 +28,14 @@ const CartPage = () => {
         c.map((item) => {
             sum = sum + item.price
         })
-        let tax = sum * 0.08
+        if (coupon.code === "OFF20") {
+            sum = sum - (sum * 0.2)
+        }
+        let tax = sum * 0.08;
+        let tot = sum + tax;
         setCartItems(sum);
         setTax(tax);
-        setTotal(sum + tax)
+        setTotal(tot);
     }
 
     useEffect(() => {
@@ -53,16 +63,35 @@ const CartPage = () => {
     }
 
     const createOrder = () => {
-        const data = {cart: cart._id, shippingAddress: shipping, taxPrice: tax, totalPrice: total,}
+        const data = {cart: cart._id, shippingAddress: shipping, taxPrice: tax, totalPrice: total, couponcode}
         axios
         .post("http://localhost:8000/api/order/createOrder", data, { withCredentials: true })
         .then((res) => {
             console.log(res.data)
+            navigate(`/order/${res.data.cart}`)
         })
         .catch((err) => {
             console.log(err);
             setErrors(err.response.data.errors)
         })
+    }
+
+    const addCoupon = () => {
+        if (coupon.code === "OFF20") {
+            setErrors("");
+            setCoupon({ ...coupon, applied:true });
+            setCouponcode(coupon.code)
+            setClick(!click);
+        } else {
+            setCoupon({ ...coupon, code:"" })
+            setErrors("Code not eligible")
+        }
+    }
+
+    const removeCoupon = () => {
+        setCoupon({ ...coupon, applied:false, code:"" })
+        setCouponcode("");
+        setClick(!click);
     }
 
     return(
@@ -72,39 +101,38 @@ const CartPage = () => {
                 <h1 className="display-6 text-center p-3">Secure Checkout</h1>
                 <hr />
                 <div className="pt-1">
-                {cart.cartItems.length 
-                ? 
-                <div>
-                    {cart.cartItems.map((item, idx) => {
-                        return(
-                            <div className="row border py-3" key={idx}>
-                                <div className="col-5">
-                                    <img className="img-fluid p-3 border mx-auto d-block" src={`${item.product.imageKey}`} />
-                                </div>
-                                <div className="col">
-                                    <p className="lead">{item.product.title}</p>
-                                    {/* <p>{item.product.description}</p> */}
-                                    <p>Quantity : {item.quantity}</p>
-                                    <p>Total: ${addZeroes(item.quantity * item.product.price)}</p>
-                                    <div className="pt-3">
-                                        <button className="btn btn-outline-danger" onClick={() => removeItem(item._id)}>Remove</button>
+                {cart.cartItems.length ? 
+                    <div>
+                        {cart.cartItems.map((item, idx) => {
+                            return(
+                                <div className="row py-3" key={idx}>
+                                    <div className="col-5">
+                                        <img className="img-fluid p-3 border mx-auto d-block" src={`${item.product.imageKey}`} />
+                                    </div>
+                                    <div className="col">
+                                        <p className="lead">{item.product.title}</p>
+                                        {/* <p>{item.product.description}</p> */}
+                                        <p>Quantity : {item.quantity}</p>
+                                        <p>Total: ${addZeroes(item.quantity * item.product.price)}</p>
+                                        <div className="pt-3">
+                                            <button className="btn btn-outline-danger" onClick={() => removeItem(item._id)}>Remove</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </div>
+                            )
+                        })}
+                    </div>
                 :
-                <div className="row">
-                    <p className="text-center p-5 border">No items in shopping cart</p>
-                </div>
+                    <div className="row">
+                        <p className="text-center p-5">No items in shopping cart</p>
+                    </div>
                 }
                 </div>
-                <div className="border row py-3 px-5">
+                <div className="row border-top py-3 px-5">
                     <div className="col">
                         <p className="text-muted">** Shipping only available in US **</p>
-                        <div class="form-floating">
-                            <input type="text" class="form-control" value={shipping.address} onChange={(e) => setShipping({...shipping, address:e.target.value})}/>
+                        <div className="form-floating">
+                            <input type="text" className="form-control" value={shipping.address} onChange={(e) => setShipping({...shipping, address:e.target.value})}/>
                             <label>Address</label>
                         </div>
                         <div class="form-floating">
@@ -118,11 +146,22 @@ const CartPage = () => {
                     </div>
                     <div className="col"></div>
                     <div className="col-auto">
-                        <p>Shopping Cart Items : ({cart.cartItems.length})</p>
                         <p>Items Cost : ${addZeroes(cartItems)} </p>
                         <p>Tax : ${addZeroes(tax)}</p>
                         <p>Shipping : FREE</p>
                         <p>Total Cost : ${addZeroes(total)}</p>
+                        <p className="text-danger">{errors}</p>
+                        {coupon.applied ? 
+                            <p>
+                                <span className="text-success">{coupon.code} Applied</span>
+                                <span className="px-2 hover" onClick={removeCoupon}>&times;</span>
+                            </p>
+                        :
+                            <div className="input-group mb-3">
+                                <input className="form-control form-control-sm" type="text" placeholder="coupon code" value={coupon.code} onChange={(e) => setCoupon({...coupon, code:e.target.value})} />
+                                <button className="btn btn-sm btn-success" onClick={() => addCoupon()}>Go</button>
+                            </div>
+                        }
                         <button className="btn btn-outline-dark" onClick={createOrder}>Checkout</button>
                     </div>
                 </div>

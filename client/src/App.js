@@ -6,13 +6,14 @@ import { UserContext } from "./utils/UserContext";
 import HomePage from "./views/HomePage";
 import ProductPage from "./views/Sales/ProductPage";
 import CartPage from "./views/Sales/CartPage";
-import CarePage from "./views/CarePage";
-import AnimalPage from "./views/AnimalPage";
+import CarePage from "./views/Guide/CarePage";
+import AnimalPage from "./views/Guide/AnimalPage";
 import TermsAndConditionPage from "./views/Information/TermsConditionPage";
 import ShippingReturnPage from "./views/Information/ShippingReturns";
 import PrivacyNotice from "./views/Information/PrivacyNotice";
 import ContactPage from "./views/Information/ContactPage";
 import CreateProduct from "./views/Admin/CreateProduct";
+import EditProduct from "./views/Admin/EditProduct";
 import SuppliesPage from "./views/Sales/SuppliesPage";
 import CategoryPage from "./views/Sales/CategoryPage";
 import ProfilePage from "./views/ProfilePage";
@@ -40,7 +41,7 @@ function App() {
   }, [])
 
   return (
-    <div>
+    <div className="bg_color">
       <UserContext.Provider value={{ loggedUser, setLoggedUser }}>
         <Router>
           <HomePage path="/" />
@@ -52,7 +53,8 @@ function App() {
           <ShippingReturnPage path="/shipping-and-return" />
           <PrivacyNotice path="/privacy-notice" />
           <ContactPage path="/contact-us" />
-          <CreateProduct path="/create-product" />
+          <CreateProduct path="/admin/create-product" />
+          <EditProduct path="/admin/edit-product/:id" />
           <SuppliesPage path="/supplies" />
           <CategoryPage path="/category/:name/:id" />
           <ProfilePage path="/profile" />
