@@ -13,13 +13,19 @@ const EditAnimal = (props) => {
         .then(navigate("/admin"))
     }
 
+    const button = () => {
+        return(
+            <button className="btn btn-success float-end">EDIT ANIMAL</button>
+        )
+    }
+
     return(
         <div>
             <Navbar />
             <div className="container-fluid px-5">
                 <p className="display-6 text-center py-2">Add Animal</p>
                 <div className="px-5 pb-5">
-                    <AnimalForm func={`update/${id}`} buttontext="EDIT ANIMAL" id={id} />
+                    <AnimalForm func={`update/${id}`} button={button} id={id} />
                     <div className="">
                         <button className="btn btn-danger float-start" onClick={deleteAnimal}>DELETE ANIMAL</button>
                     </div>

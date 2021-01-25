@@ -3,7 +3,7 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 
 const AnimalForm = (props) => {
-    const { func, buttontext, id } = props;
+    const { func, button, id } = props;
     const [commonName, setCommonName] = useState("");
     const [description, setDescription] = useState("");
     const [origin, setOrigin] = useState("");
@@ -97,7 +97,7 @@ const AnimalForm = (props) => {
                 <textarea className="form-control" style={{height: "100px"}} value={care} onChange={(e) => setCare(e.target.value)} /> 
                 <label>Care</label>
             </div>
-                <button className="btn btn-dark float-end">{buttontext}</button>
+            {button()}
         </form>
     )
 }
