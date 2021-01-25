@@ -7,7 +7,7 @@ module.exports = {
             .catch((err) => res.status(400).json(err))
     },
     getAll(req, res) {
-        Category.find().sort({ name: 1})
+        Category.find().sort({ name: 1}).populate('products')
             .then((categorys) => res.json(categorys))
             .catch((err) => res.status(400).json(err))
     },
@@ -23,8 +23,16 @@ module.exports = {
     },
     async addProduct(req, res) {
         const cat = await Category.findOneAndUpdate(
-            { _id: req.body.id },
+            { _id: req.body.category_id },
             { $addToSet: {products: req.body.product_id} },
+            { upsert: true, new: true}
+        )
+        return res.json(cat)
+    },
+    async removeProduct(req, res) {
+        const cat = await Category.findOneAndUpdate(
+            { _id: req.body.category_id },
+            { $pull: {products: req.body.product_id} },
             { upsert: true, new: true}
         )
         return res.json(cat)

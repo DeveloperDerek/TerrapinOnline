@@ -43,7 +43,11 @@ const Navbar = () => {
                     </a>
                     {loggedUser.check ?
                         <div className="d-flex">
-                            <Link className="btn btn-sm btn-outline-light bisqueborder" to="/profile">Profile</Link>
+                            {loggedUser.userInfo.role === "ROLE_ADMIN" ?
+                                <Link className="btn btn-sm btn-outline-dark bisqueborder" to="/admin">Admin</Link>
+                            :
+                                <Link className="btn btn-sm btn-outline-light bisqueborder" to="/profile">Profile</Link>
+                            }
                             <button className="btn btn-sm btn-outline-light bisqueborder" onClick={logout}>Logout</button>
                             <Link to="/cart" className="btn btn-sm btn-outline-light bisqueborder">
                                 <span>

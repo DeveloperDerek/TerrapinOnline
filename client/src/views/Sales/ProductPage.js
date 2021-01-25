@@ -53,7 +53,7 @@ const ProductPage = (props) => {
                         <div className="row">
                             <p className="display-5 text-center py-3">{product.title}</p>
                             <div className="col">
-                                <img className="img-fluid border rounded mx-auto d-block py-3" src={product.imageKey} />
+                                <img className="img-fluid border rounded mx-auto d-block" src={product.imageKey} />
                             </div>
                             <div className="col">
                                 <p className="py-2">{product.description}</p>

@@ -12,8 +12,15 @@ import TermsAndConditionPage from "./views/Information/TermsConditionPage";
 import ShippingReturnPage from "./views/Information/ShippingReturns";
 import PrivacyNotice from "./views/Information/PrivacyNotice";
 import ContactPage from "./views/Information/ContactPage";
-import CreateProduct from "./views/Admin/CreateProduct";
-import EditProduct from "./views/Admin/EditProduct";
+import CreateProduct from "./views/Admin/CreateProductPage";
+import EditProduct from "./views/Admin/EditProductPage";
+import ViewProducts from "./views/Admin/ViewProducts";
+import ViewCategories from "./views/Admin/ViewCategories";
+import CreateCategory from "./views/Admin/CreateCategory";
+import EditCategory from "./views/Admin/EditCategory";
+import CreateAnimal from "./views/Admin/CreateAnimal";
+import EditAnimal from "./views/Admin/EditAnimal";
+import AdminPage from "./views/Admin/AdminPage";
 import SuppliesPage from "./views/Sales/SuppliesPage";
 import CategoryPage from "./views/Sales/CategoryPage";
 import ProfilePage from "./views/ProfilePage";
@@ -53,8 +60,15 @@ function App() {
           <ShippingReturnPage path="/shipping-and-return" />
           <PrivacyNotice path="/privacy-notice" />
           <ContactPage path="/contact-us" />
+          <AdminPage path="/admin" />
           <CreateProduct path="/admin/create-product" />
           <EditProduct path="/admin/edit-product/:id" />
+          <ViewProducts path="/admin/view-products" />
+          <ViewCategories path="/admin/view-categories" />
+          <CreateCategory path="/admin/create-category" />
+          <EditCategory path="/admin/edit-category/:id" />
+          <CreateAnimal path="/admin/create-animal" />
+          <EditAnimal path="/admin/edit-animal/:id" />
           <SuppliesPage path="/supplies" />
           <CategoryPage path="/category/:name/:id" />
           <ProfilePage path="/profile" />

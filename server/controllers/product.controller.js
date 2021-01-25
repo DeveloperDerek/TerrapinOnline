@@ -4,11 +4,13 @@ const Category = require("../models/category.model");
 module.exports = {
     async create(req, res) {
         const newProduct = await Product.create(req.body)
-        const cat = await Category.findOneAndUpdate(
-            { _id: req.body.id },
-            { $addToSet: {products: newProduct._id} },
-            { upsert: true, new: true}
-        )
+        if(req.body.id) {
+            await Category.findOneAndUpdate(
+                { _id: req.body.id },
+                { $addToSet: {products: newProduct._id} },
+                { upsert: true, new: true}
+            )
+        }
         return res.json(newProduct)
     },
     findOne(req, res) {
@@ -18,6 +20,11 @@ module.exports = {
     },
     findAll(req, res) {
         Product.find()
+            .then((product) => res.json(product))
+            .catch((err) => res.status(400).json(err))
+    },
+    searchAll(req, res) {
+        Product.find({ title: { "$regex": req.params.title, "$options": "i" } })
             .then((product) => res.json(product))
             .catch((err) => res.status(400).json(err))
     },
@@ -37,7 +44,7 @@ module.exports = {
             .catch((err) => res.status(400).json(err));
     },
     delete(req, res) {
-        Product.findOneAndDelete({_id: req.params.id})
+        Product.findOneAndDelete({ _id: req.params.id })
             .then(product => res.json(product))
             .catch(err => res.status(400).json(err))
     }

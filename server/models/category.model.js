@@ -13,10 +13,7 @@ const categorySchema = new Mongoose.Schema(
         products : [{
             type: Mongoose.Schema.ObjectId,
             ref: 'Product'
-        }],
-        imageKey: {
-            type: String
-        },
+        }]
     }, {timestamps: true}
 )
 

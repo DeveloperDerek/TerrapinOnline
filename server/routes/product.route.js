@@ -4,6 +4,7 @@ const router = require("express").Router();
 router.post("/create/", productController.create);
 router.get("/view/:id", productController.findOne);
 router.get("/all", productController.findAll);
+router.get("/search/:title", productController.searchAll);
 router.put("/update/:id", productController.update);
 router.delete("/delete/:id", productController.delete);
 
