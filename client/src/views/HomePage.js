@@ -4,11 +4,12 @@ import Navbar from "../components/Navbar";
 
 const HomePage = () => {
     return(
-        <div className="">
+        <div>
             <Navbar />
             <div className="py-3">
                 {/* Carosuel */}
                 <div className="container-fluid">
+                <h6 className="text-center border-top border-bottom text-success">Enter code OFF20 for 20% off entire order</h6>
                     <div className="row d-flex justify-content-center">
                         <div className="col-md-8">
                             <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">

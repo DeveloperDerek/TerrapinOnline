@@ -135,12 +135,12 @@ const CartPage = () => {
                             <input type="text" className="form-control" value={shipping.address} onChange={(e) => setShipping({...shipping, address:e.target.value})}/>
                             <label>Address</label>
                         </div>
-                        <div class="form-floating">
-                            <input type="text" class="form-control" value={shipping.city} onChange={(e) => setShipping({...shipping, city:e.target.value})}/>
+                        <div className="form-floating">
+                            <input type="text" className="form-control" value={shipping.city} onChange={(e) => setShipping({...shipping, city:e.target.value})}/>
                             <label>City</label>
                         </div>
-                        <div class="form-floating">
-                            <input type="number" class="form-control" value={shipping.postalCode} onChange={(e) => setShipping({...shipping, postalCode:e.target.value})}/>
+                        <div className="form-floating">
+                            <input type="number" className="form-control" value={shipping.postalCode} onChange={(e) => setShipping({...shipping, postalCode:e.target.value})}/>
                             <label>Zipcode</label>
                         </div>
                     </div>

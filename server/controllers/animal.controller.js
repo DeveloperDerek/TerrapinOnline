@@ -16,6 +16,13 @@ module.exports = {
             .then((animal) => res.json(animal))
             .catch((err) => res.status(400).json(err))
     },
+    search(req, res) {
+        Animal.find({
+            commonName: { "$regex": req.params.name, "$options": "i" }
+        })
+            .sort({ commonName: 1 })
+            .then((animals) => res.json(animals))
+    },
     findTurtles(req, res) {
         Animal.find({ category: turtle }).sort({ commonName: 1 })
             .then((turt) => res.json(turt))

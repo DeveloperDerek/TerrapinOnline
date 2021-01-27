@@ -22,7 +22,7 @@ const CreateCategory = () => {
         <div>
             <Navbar />
             <div className="container-fluid px-5">
-                <p className="display-6 text-center py-2">Add Category</p>
+                <p className="display-6 text-center py-2 text-success">Add Category</p>
                 <div className="px-5 row">
                     <form onSubmit={formHandler}>
                         <div className="form-floating mb-3">

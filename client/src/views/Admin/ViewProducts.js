@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, navigate } from "@reach/router";
-import { addZeroes } from "../../utils/AddZeroes";
 import Navbar from "../../components/Navbar";
 import ProductCol from "../../components/Admin/ProductCol";
 
 const ViewProducts = () => {
     const [products, setProducts] = useState(null)
-    const [search, setSearch] = useState("%20");
+    const [search, setSearch] = useState("");
 
     useEffect(() => {
         searchProducts()
@@ -15,7 +13,7 @@ const ViewProducts = () => {
 
     const searchProducts = () => {
         axios
-        .get(`http://localhost:8000/api/product/search/${search}`)
+        .get(`http://localhost:8000/api/product/all/${search}`)
         .then((res) => {
             setProducts(res.data)
         })
@@ -35,8 +33,8 @@ const ViewProducts = () => {
         <div>
             <Navbar />
             <div className="container-fluid">
-                <div className="row px-5">
-                    <p className="display-6 text-center py-2">Search Products</p>
+                <div className="px-5">
+                    <p className="display-6 text-center py-2 text-success">Search Products</p>
                     <div className="px-5">
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" onChange={(e) => setSearch(e.target.value)}/>

@@ -37,7 +37,7 @@ const CreateProductPage = () => {
         <div>
             <Navbar />
             <div className="container-fluid px-5">
-                <p className="display-6 text-center py-2">Add Product</p>
+                <p className="display-6 text-center py-2 text-success">Add Product</p>
                 <div className="px-5">
                     <form onSubmit={formHandler}>
                         <div className="row">

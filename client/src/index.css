@@ -71,4 +71,6 @@ body {
     opacity: 0.25;
 }
 
-
+.no-bullets {
+    list-style-type: none;
+}

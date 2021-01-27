@@ -14,7 +14,6 @@ module.exports = {
             totalPrice,
             couponcode,
         } = req.body
-        
         const newOrder = new Order({
             user: req.user._id,
             cart,
@@ -24,9 +23,7 @@ module.exports = {
             shippingPrice,
             totalPrice
         })
-
         const createdOrder = await newOrder.save();
-
         const clearCart = await Cart.updateOne(
             { _id: cart }, 
             { $unset: {
@@ -36,11 +33,42 @@ module.exports = {
         )
         res.status(201).json(createdOrder);
     },
-    // @desc    Get all orders
-    // @route   GET /api/orders
-    // @access  Private/Admin
     async getOrders (req, res) {
-        const orders = await Order.find({user: req.user._id}).populate("cart")
+        const orders = await Order.find({user: req.user._id})
+            .populate("cart")
+        res.json(orders)
+    },
+    async viewOrder (req, res) {
+        const orders = await Order.findOne({_id: req.params.id})
+        .populate("cart")
+        .populate("user")
+        .populate("cartItems.product")
+        res.json(orders)
+    },
+    async setStatus (req, res) {
+        const orders = await Order.findOneAndUpdate(
+            { _id: req.params.id },
+            { status : req.body.status },
+            { upsert: true, new: true }
+            )
+            return res.json(orders)
+        },
+    async viewOrders (req, res) {
+        const orders = await Order.find()
+            .populate("cart")
+            .populate("user")
+        res.json(orders)
+    },
+    async search (req, res) {
+        if (req.params.min <= req.params.max) {
+            
+        }
+        const orders = await Order.find({
+            status: req.params.status,
+            totalPrice: { $gte: req.params.min, $lte: req.params.max }
+        })
+            .populate("cart")
+            .populate("user")
         res.json(orders)
     }
 }

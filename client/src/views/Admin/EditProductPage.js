@@ -93,7 +93,7 @@ const EditProductPage = (props) => {
         <div>
             <Navbar />
             <div className="container-fluid px-5 pb-5">
-                <p className="display-6 text-center py-2">{product.title}</p>
+                <p className="display-6 text-center py-2 text-success">{product.title}</p>
                 <div className="pb-3">
                     <img className="img-fluid border rounded mx-auto d-block" src={product.imageKey} />
                 </div>

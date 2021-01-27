@@ -48,7 +48,7 @@ const EditCategory = (props) => {
         <div>
             <Navbar />
             <div className="container-fluid px-5 pb-3">
-                <p className="display-6 text-center py-2">Edit {category.name}</p>
+                <p className="display-6 text-center py-2 text-success">Edit {category.name}</p>
                 <div className="px-5 row">
                     <form onSubmit={formHandler}>
                         <div className="form-floating mb-3">

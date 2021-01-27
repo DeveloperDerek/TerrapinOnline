@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import { navigate } from "@reach/router";
 import Navbar from "../../components/Navbar";
@@ -23,7 +23,7 @@ const EditAnimal = (props) => {
         <div>
             <Navbar />
             <div className="container-fluid px-5">
-                <p className="display-6 text-center py-2">Add Animal</p>
+                <p className="display-6 text-center py-2 text-success">Add Animal</p>
                 <div className="px-5 pb-5">
                     <AnimalForm func={`update/${id}`} button={button} id={id} />
                     <div className="">

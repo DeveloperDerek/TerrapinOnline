@@ -20,6 +20,9 @@ import CreateCategory from "./views/Admin/CreateCategory";
 import EditCategory from "./views/Admin/EditCategory";
 import CreateAnimal from "./views/Admin/CreateAnimal";
 import EditAnimal from "./views/Admin/EditAnimal";
+import ViewAnimals from "./views/Admin/ViewAnimals";
+import ViewOrders from "./views/Admin/ViewOrders";
+import EditOrder from "./views/Admin/EditOrder";
 import AdminPage from "./views/Admin/AdminPage";
 import SuppliesPage from "./views/Sales/SuppliesPage";
 import CategoryPage from "./views/Sales/CategoryPage";
@@ -69,6 +72,9 @@ function App() {
           <EditCategory path="/admin/edit-category/:id" />
           <CreateAnimal path="/admin/create-animal" />
           <EditAnimal path="/admin/edit-animal/:id" />
+          <ViewAnimals path="/admin/view-animals" />
+          <ViewOrders path="/admin/view-orders" />
+          <EditOrder path="/admin/edit-order/:id" />
           <SuppliesPage path="/supplies" />
           <CategoryPage path="/category/:name/:id" />
           <ProfilePage path="/profile" />

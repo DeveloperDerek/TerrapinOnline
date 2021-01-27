@@ -57,9 +57,19 @@ userSchema.pre("save", function(next) {
     bcrypt.hash(this.password, 10)
     .then(hash => {
         this.password = hash;
+        // this.fullName = this.firstName + " " + this.lastName
         next();
     });
 });
+
+userSchema.virtual('fullName')
+    .get(function() {
+        return this.firstName + ' ' + this.lastName;
+    }).
+    set(function(v) {
+        this.firstName = v.substr(0, v.indexOf(' '));
+        this.lastName = v.substr(v.indexOf(' ') + 1);
+    });
 
 userSchema.plugin(uniqueValidator, {message: "{PATH} is already taken"});
 

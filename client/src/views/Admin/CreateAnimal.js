@@ -16,7 +16,7 @@ const CreateAnimal = () => {
         <div>
             <Navbar />
             <div className="container-fluid px-5">
-                <p className="display-6 text-center py-2">Add Animal</p>
+                <p className="display-6 text-center py-2 text-success">Add Animal</p>
                 <div className="px-5 pb-5">
                     <AnimalForm func="create" button={button} />
                 </div>

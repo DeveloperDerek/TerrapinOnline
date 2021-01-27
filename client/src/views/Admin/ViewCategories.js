@@ -43,8 +43,8 @@ const ViewCategories = () => {
         <div>
             <Navbar />
             <div className="container-fluid">
-                <div className="row px-5">
-                    <p className="display-6 text-center py-2">Search Categories</p>
+                <div className="px-5">
+                    <p className="display-6 text-center py-2 text-success">Search Categories</p>
                     <div className="px-5">
                         <div className="form-floating mb-3">
                             <select className="form-control" onChange={(e) => viewProduct(e.target.value)}>
@@ -58,7 +58,9 @@ const ViewCategories = () => {
                             <label>Category</label>
                         </div>
                     </div>
-                    <a className="lead text-center" href={`/admin/edit-category/${category._id}`}>{category.name}</a>
+                    <p className="text-center">
+                        <a className="lead" href={`/admin/edit-category/${category._id}`}>{category.name}</a>
+                    </p>
                     <p>{category.description}</p>
                     <ProductCol products={products} destroy={removeProduct} />
                 </div>

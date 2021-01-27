@@ -30,11 +30,11 @@ const AdminPage = () => {
                     <Link to="/admin/create-animal">Add Animal</Link>
                 </div>
                 <div>
-                    <Link to="/">View Animals</Link>
+                    <Link to="/admin/view-animals">View Animals</Link>
                 </div>
 
                 <div>
-                    <Link to="/">View Orders</Link>
+                    <Link to="/admin/view-orders">View Orders</Link>
                 </div>
 
                 <div>
