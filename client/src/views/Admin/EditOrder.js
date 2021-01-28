@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { navigate } from "@reach/router";
 import { addZeroes } from "../../utils/AddZeroes";
 import Navbar from "../../components/Navbar";
 import moment from "moment" //moment(insert date here).format("MMM Do YY");

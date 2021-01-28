@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, navigate } from "@reach/router";
 import Navbar from "../../components/Navbar";
 import ProductCol from "../../components/Admin/ProductCol";
 

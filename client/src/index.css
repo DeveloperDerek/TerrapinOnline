@@ -74,3 +74,8 @@ body {
 .no-bullets {
     list-style-type: none;
 }
+
+.ninja {
+    max-width: 72%;
+    height: auto;
+}

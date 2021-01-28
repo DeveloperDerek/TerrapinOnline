@@ -24,6 +24,7 @@ import ViewAnimals from "./views/Admin/ViewAnimals";
 import ViewOrders from "./views/Admin/ViewOrders";
 import EditOrder from "./views/Admin/EditOrder";
 import AdminPage from "./views/Admin/AdminPage";
+import ViewMessages from "./views/Admin/ViewMessages";
 import SuppliesPage from "./views/Sales/SuppliesPage";
 import CategoryPage from "./views/Sales/CategoryPage";
 import ProfilePage from "./views/ProfilePage";
@@ -75,6 +76,7 @@ function App() {
           <ViewAnimals path="/admin/view-animals" />
           <ViewOrders path="/admin/view-orders" />
           <EditOrder path="/admin/edit-order/:id" />
+          <ViewMessages path="/admin/view-messages" />
           <SuppliesPage path="/supplies" />
           <CategoryPage path="/category/:name/:id" />
           <ProfilePage path="/profile" />

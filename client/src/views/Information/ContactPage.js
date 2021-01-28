@@ -14,7 +14,7 @@ const ContactPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const msg = {fullName, email, message}
+        const msg = {fullName, email, message, phoneNumber, orderNumber, }
         axios
             .post("http://localhost:8000/api/contact/submit", msg)
             .then((res) => {

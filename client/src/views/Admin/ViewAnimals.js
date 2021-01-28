@@ -16,7 +16,7 @@ const ViewAnimals = () => {
         .then((res) => {
             if(search.category) {
                 setAnimals(res.data.filter(val => val.category === search.category))
-            } else{
+            } else {
                 setAnimals(res.data)
             }
         })

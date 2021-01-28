@@ -20,16 +20,17 @@ const ViewOrders = () => {
         axios
         .get(`http://localhost:8000/api/order/all`)
         .then((res) => {
-            setOrders(res.data)
+            console.log(res.data)
+            if (search.email) {
+                setOrders(res.data.filter(o => o.user.email === search.email))
+            } else {
+                setOrders(res.data)
+            }
         })
     }, [search])
 
     if(orders === null) {
         return(<div>Loading...</div>)
-    }
-
-    const sortData = (val) => {
-        setOrders()
     }
 
     return(

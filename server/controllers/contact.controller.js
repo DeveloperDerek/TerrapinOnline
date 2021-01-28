@@ -38,6 +38,13 @@ module.exports = {
     },
     getAll(req, res) {
         Contact.find()
+            .sort({ createdAt : -1})
+            .then((contacts) => res.json(contacts))
+            .catch((err) => res.json(err));
+    },
+    search(req, res) {
+        Contact.find({ email: { "$regex": req.params.email, "$options": "i" } })
+            .sort({ createdAt : -1})
             .then((contacts) => res.json(contacts))
             .catch((err) => res.json(err));
     }
