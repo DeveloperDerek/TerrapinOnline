@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "@reach/router";
 
+
 const Footer = () => {
+    const [email, setEmail] = useState("")
+
+    const formHandler = () => {
+        console.log(email)
+    }
+
     return(
         <div className="container-fluid pb-4">
             <hr />
@@ -48,10 +55,12 @@ const Footer = () => {
                             <h5>Newsletter</h5>
                             <div>Sign up for our newsletter</div>
                         </div>
-                        <div className="input-group input-group-sm">
-                            <input type="text" className="form-control" placeholder="Enter your email address" />
-                            <button className="btn btn-outline-secondary" type="button" id="button-addon2">Submit</button>
-                        </div>
+                        <form onSubmit={formHandler}>
+                            <div className="input-group input-group-sm">
+                                <input type="text" className="form-control" placeholder="Enter your email address" onChange={(e) => setEmail(e.target.value)} />
+                                <button className="btn btn-outline-secondary">Submit</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

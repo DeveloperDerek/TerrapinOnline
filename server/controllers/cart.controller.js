@@ -27,8 +27,21 @@ module.exports = {
         )
         return res.json(userCart)
     },
+    async updateCart(req, res) {
+        const userCart = await Cart.findOneAndUpdate(
+            { user: req.user._id, "cartItems._id": req.body.cartID } ,
+            { $set: 
+                {
+                    "cartItems.$.price" : req.body.price,
+                    "cartItems.$.quantity" : req.body.quantity
+                }
+            },
+            { upsert: true, new: true}
+        )
+        return res.json(userCart)
+    },
     async viewCart(req, res) {
-        const cart = await Cart.findOne({user: req.user._id})
+        const cart = await Cart.findOne({ user: req.user._id })
             .populate('cartItems.product')
             // // .populate lets you reference documents in other collections
         if (cart === null) {

@@ -7,8 +7,6 @@ router.post("/createOrder", jwtAuth, orderController.createOrder);
 router.get("/getOrder", jwtAuth, orderController.getOrders);
 router.get("/view/:id", orderController.viewOrder);
 router.put("/update/:id", orderController.setStatus);
-router.get("/all", orderController.viewOrders);
-// router.get("/all/:status/", orderController.search);
-// router.get("/all/:status/:min/:max", orderController.search);
+router.get("/all/:status/:min/:max/:end", orderController.search);
 
 module.exports = router;

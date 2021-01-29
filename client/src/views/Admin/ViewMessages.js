@@ -32,7 +32,7 @@ const ViewMessages = () => {
                         </div>
                         {messages.map((msg, idx) => {
                             return(
-                                <div key={idx} className="border mb-3 px-3 pt-2">
+                                <div key={idx} className="border mb-3 px-3 pt-2 bg-white">
                                     <p>{msg.fullName}</p>
                                     <p>{msg.email}</p>
                                     <p>{moment(msg.createdAt).format("MMMM Do, YYYY")}</p>

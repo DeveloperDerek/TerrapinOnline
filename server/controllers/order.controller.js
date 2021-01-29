@@ -60,15 +60,15 @@ module.exports = {
         res.json(orders)
     },
     async search (req, res) {
-        if (req.params.min <= req.params.max) {
-            
-        }
-        const orders = await Order.find({
-            status: req.params.status,
-            totalPrice: { $gte: req.params.min, $lte: req.params.max }
-        })
+        let query = {};
+        if(req.params.status && req.params.status > 0) query.status = {$in : req.params.status};
+        if(req.params.min && req.params.min > 0) query.totalPrice = {$gte : req.params.min};
+        if(req.params.max && req.params.max < 0) query.totalPrice = {$lte : req.params.max}; 
+        if(req.params.min & req.params.max) query.totalPrice = {$gte : req.params.min, $lt: req.params.max};
+        const orders = await Order.find(query)
+            .sort({ createdAt: -1 })
             .populate("cart")
             .populate("user")
-        res.json(orders)
+            res.json(orders)
     }
 }

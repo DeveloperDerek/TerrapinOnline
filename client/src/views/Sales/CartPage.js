@@ -56,10 +56,7 @@ const CartPage = () => {
         const data = {cartItem: id};
         axios
         .post("http://localhost:8000/api/cart/removeFromCart", data, { withCredentials: true })
-        .then((res) => {
-            console.log(res.data)
-            setClick(!click);
-        })
+        .then(() => setClick(!click))
     }
 
     const createOrder = () => {
@@ -94,6 +91,16 @@ const CartPage = () => {
         setClick(!click);
     }
 
+    const updateQuantity = (cartID, p, quantity) => {
+        if(quantity > 0) {
+            let price = p * quantity;
+            const data = { cartID, price, quantity }
+            axios
+            .post("http://localhost:8000/api/cart/update", data, { withCredentials: true })
+            .then(() => setClick(!click))
+        }
+    }
+
     return(
         <div>
             <Navbar />
@@ -102,7 +109,7 @@ const CartPage = () => {
                 <hr />
                 <div className="pt-1">
                 {cart.cartItems.length ? 
-                    <div>
+                    <div className="px-5">
                         {cart.cartItems.map((item, idx) => {
                             return(
                                 <div className="row py-3" key={idx}>
@@ -112,8 +119,19 @@ const CartPage = () => {
                                     <div className="col">
                                         <p className="lead">{item.product.title}</p>
                                         {/* <p>{item.product.description}</p> */}
-                                        <p>Quantity : {item.quantity}</p>
-                                        <p>Total: ${addZeroes(item.quantity * item.product.price)}</p>
+                                        <p>Quantity: {item.quantity}
+                                        <button className="btn" onClick={() => {
+                                            updateQuantity(item._id, item.product.price, item.quantity-1)
+                                        }}>
+                                            <i className="las la-arrow-down"></i>
+                                        </button>
+                                        <button className="btn" onClick={() => {
+                                            updateQuantity(item._id, item.product.price, item.quantity+1)
+                                        }}>
+                                            <i className="las la-arrow-up"></i>
+                                        </button>
+                                        </p>
+                                        <p>Total: ${addZeroes(item.price)}</p>
                                         <div className="pt-3">
                                             <button className="btn btn-outline-danger" onClick={() => removeItem(item._id)}>Remove</button>
                                         </div>
