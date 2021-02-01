@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "@reach/router";
-
+import { Link, navigate } from "@reach/router";
+import axios from "axios";
 
 const Footer = () => {
     const [email, setEmail] = useState("")
 
-    const formHandler = () => {
-        console.log(email)
+    const formHandler = (e) => {
+        e.preventDefault();
+        const data = { email }
+        axios
+        .post("http://localhost:8000/mailchimp/addtonewsletter", data)
+        .then((res) => console.log("err", res))
+        .catch((err) => console.log("errrrrrpr", err))
     }
 
     return(

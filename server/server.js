@@ -22,6 +22,7 @@ app.use("/api/category/", require("./routes/category.route"));
 app.use("/api/cart/", require("./routes/cart.route"));
 app.use("/api/order/", require("./routes/order.route"));
 app.use("/api/animal/", require("./routes/animal.route"));
+app.use("/mailchimp/", require("./routes/newsletter.route"));
 
 app.listen(process.env.PORT, () => 
     console.log(`Listening on port ${process.env.PORT}`)
