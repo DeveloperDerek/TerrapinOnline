@@ -49,6 +49,10 @@ body {
     min-height: 100vh;
 }
 
+.fill-75 {
+    min-height: 62vh;
+}
+
 .fill-in {
     min-height: 100%;
 }

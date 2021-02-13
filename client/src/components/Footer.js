@@ -3,15 +3,16 @@ import { Link, navigate } from "@reach/router";
 import axios from "axios";
 
 const Footer = () => {
-    const [email, setEmail] = useState("")
+    const [email, setEmail] = useState("");
+    const [error, setError] = useState("");
 
     const formHandler = (e) => {
         e.preventDefault();
         const data = { email }
         axios
         .post("http://localhost:8000/mailchimp/addtonewsletter", data)
-        .then((res) => console.log("err", res))
-        .catch((err) => console.log("errrrrrpr", err))
+        .then(() => navigate("/success"))
+        .catch((err) => setError(err.response.data.error))
     }
 
     return(
@@ -55,8 +56,8 @@ const Footer = () => {
                             <Link className="text-decoration-none text-secondary" to="/supplies">Supplies</Link>
                         </div>
                     </div>
-                    <div className="col text-secondary">
-                        <div className="text-center pb-1">
+                    <div className="col text-secondary text-center">
+                        <div className="pb-1">
                             <h5>Newsletter</h5>
                             <div>Sign up for our newsletter</div>
                         </div>
@@ -65,6 +66,7 @@ const Footer = () => {
                                 <input type="text" className="form-control" placeholder="Enter your email address" onChange={(e) => setEmail(e.target.value)} />
                                 <button className="btn btn-outline-secondary">Submit</button>
                             </div>
+                            {error ? <small className="text-danger">{error}</small> : ""}
                         </form>
                     </div>
                 </div>

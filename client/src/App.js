@@ -31,6 +31,7 @@ import ProfilePage from "./views/ProfilePage";
 import OrderPage from "./views/Sales/OrderPage";
 import TortoiseSalePage from "./views/Sales/TortoiseSalePage";
 import TurtleSalePage from "./views/Sales/TurtleSalePage";
+import Success from "./views/Information/Success";
 
 function App() {
   const [loggedUser, setLoggedUser] = useState({
@@ -83,6 +84,7 @@ function App() {
           <OrderPage path="/order/:id" />
           <TortoiseSalePage path="/tortoise/:id" />
           <TurtleSalePage path="/turtle/:id" />
+          <Success path="/success" />
         </Router>
       </UserContext.Provider>
     </div>
